@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LexiBridge English - Connecting You with English</title>
+    <style>
+        :root {
+            --primary-blue: #2563eb;
+            --primary-dark: #1e40af;
+            --secondary-green: #059669;
+            --background-light: #f8fafc;
+            --text-dark: #1e293b;
+            --gradient-primary: linear-gradient(135deg, #2563eb, #3b82f6);
+            --yellow: #FFD166;
+            --white: #F7F9FC;
+            --lavender: #A5B4FC;
+            --dark: #2D3748;
+            --gray: #718096;
+            --light-gray: #E2E8F0;
+			--teal: #007C89;
+			--coral: #FF686B;
+			--accent-yellow: #f59e0b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Arial', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--teal);
+        }
+        
+        .logo span {
+            color: var(--coral);
+        }
+
+        .brush {
+            color: var(--coral);
+            font-family: Brush Script MT; 
+            font-size: 2rem;
+            font-weight: 300;            
+        }
+
+        .language-selector {
+            display: flex;
+            gap: 10px;
+        }
+
+        .language-btn {
+            padding: 8px 16px;
+            border: 1px solid var(--light-gray);
+            background: white;
+            color: var(--teal);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .language-btn:hover, .language-btn.active {
+            background: var(--accent-yellow);
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--teal);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background: var(--accent-yellow);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 18px;
+            transition: transform 0.1s;
+            margin: 10px;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.02);
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 60px 0;
+            background: white;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 30px;
+            background: var(--background-light);
+            border-radius: 10px;
+        }
+
+        .stat-number {
+            font-size: 42px;
+            color: var(--teal);
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 18px;
+            color: #64748b;
+        }
+
+        /* Products Section */
+        .products {
+            padding: 60px 0;
+            background: var(--background-light);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 40px;
+            color: var(--teal);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            min-height: 500px;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--teal);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: white;
+            font-size: 28px;
+        }
+
+        .product-title {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: var(--teal);
+        }
+
+        .product-title-end {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: var(--coral);
+        }
+
+        .product-slogan {
+            font-style: italic;
+            color: var(--teal);
+            margin-bottom: 15px;
+        }
+
+        .product-age {
+            background: #e2e8f0;
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .product-description {
+            margin-bottom: 20px;
+            color: #475569;
+        }
+
+        .product-features {
+            list-style: none;
+            color: #64748b;
+            margin-bottom: 20px;
+        }
+
+        .product-features li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .product-features li:before {
+            content: "✓";
+            color: var(--secondary-green);
+            position: absolute;
+            left: 0;
+        }
+        
+        .product-btn-container {
+            margin-top: auto;
+            display: flex;
+            justify-content: flex-end;
+        }
+        
+        .product-btn {
+            padding: 10px 20px;
+            border: none;
+            background: var(--accent-yellow);
+            color: var(--white);
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .product-btn:hover {
+            background: var(--coral);
+            transform: translateY(-2px);
+        }
+
+        /* Method Section */
+        .method {
+            padding: 60px 0;
+            background: var(--light-gray);
+            margin-bottom: 40px;
+        }
+
+        .method-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .method-chart {
+            flex: 1;
+            position: relative;
+        }
+
+        .progress-bar {
+            height: 20px;
+            background: #F7F9FC;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--coral);
+            border-radius: 10px;
+            position: absolute;
+            left: 0;
+            animation: growWidth 2s ease-in-out;
+        }
+
+        @keyframes growWidth {
+            from { width: 0; }
+        }
+
+        .method-text {
+            flex: 1;
+        }
+
+        .method-text h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: var(--teal);
+        }
+        
+        /* testimonials Section */
+        .testimonials {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 2rem;
+          justify-content: center;
+          background: #fff;
+          margin-bottom: 30px;
+        }
+        
+        .testimonial {
+          background: var(--background-light);
+          padding: 2rem;
+          border-radius: 8px;
+          box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+          flex: 1;
+          min-width: 280px;
+          max-width: 350px;
+        }
+        
+        .testimonial-header {
+          display: flex;
+          align-items: center;
+          margin-bottom: 1.5rem;
+        }
+        
+        .testimonial-photo {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          margin-right: 1rem;
+          background-color: var(--light-gray);
+        }
+        
+        .testimonial-meta h4 {
+          margin: 0;
+        }
+        
+        .testimonial-meta p {
+          color: var(--gray);
+          font-size: 0.9rem;
+        }
+        
+        .testimonial-quote {
+          font-style: italic;
+          color: var(--dark);
+        }
+
+
+        /* Footer */
+        footer {
+          background-color: var(--teal);
+          color: white;
+          padding: 3rem 2rem;
+        }
+        
+        .footer-content {
+          max-width: 1200px;
+          margin: 0 auto;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
+          gap: 2rem;
+        }
+        
+        .footer-column {
+          flex: 1;
+          min-width: 200px;
+        }
+        
+        .footer-column h3 {
+          font-size: 1.2rem;
+          margin-bottom: 1.5rem;
+        }
+        
+        .footer-links {
+          list-style: none;
+        }
+        
+        .footer-links li {
+          margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+          color: rgba(255,255,255,0.8);
+          text-decoration: none;
+          transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+          color: white;
+        }
+        
+        .copyright {
+          text-align: center;
+          padding-top: 2rem;
+          margin-top: 2rem;
+          border-top: 1px solid rgba(255,255,255,0.2);
+          color: rgba(255,255,255,0.7);
+          font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .method-content {
+                flex-direction: column;
+            }
+
+            .nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .language-selector {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <div class="logo">Lexi<span>Bridge</span><span class="brush"> English</span></div>
+                <div class="language-selector">
+                    <button class="language-btn active">English</button>
+                    <button class="language-btn">한국어</button>
+                    <button class="language-btn">日本語</button>
+                    <button class="language-btn">中文</button>
+                    <button class="language-btn">SG</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Connecting You with English</h1>
+            <p>Learn English the way it was meant to be used — naturally.</p>
+            <a href="#products" class="cta-button">Start Learning Today</a>
+            <a href="#method" class="cta-button" style="background: transparent; border: 2px solid white;">Learn More</a>
+        </div>
+    </section>
+
+    <section class="products" id="products">
+        <div class="container">
+            <h2 class="section-title">Our Learning Apps</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-icon"><img src="tales-icon.jpg" width="80px" height="80px"></div>
+                    <h3 class="product-title">Lexi<span class="product-title-end">Tales</span></h3>
+                    <p class="product-slogan">"100s of stories for the price of one"</p>
+                    <div class="product-age">Ages 7-13</div>
+                    <p class="product-description">Immersive storytelling that makes English learning fun and engaging for children.</p>
+                    <ul class="product-features">
+                        <li>Choose themes to create unique stories</li>
+                        <li>Comprehension quizzes</li>
+						<li>Audio stories with native-speakers</li>
+                        <li>Word lists and pronunciation checks</li>
+                        <li>Detailed feedback on writing tasks</li>
+                    </ul>
+                    <div class="product-btn-container">
+                        <a href="lexitales.html" class="product-btn">Learn More</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-icon"><img src="flash-icon.jpg" width="80px" height="80px"></div>
+                    <h3 class="product-title">Lexi<span class="product-title-end">Flash</span></h3>
+                    <p class="product-slogan">"English in a Flash"</p>
+                    <div class="product-age">All Ages</div>
+                    <p class="product-description">Free flashcard game to test your English vocabulary in 60-second challenges.</p>
+                    <ul class="product-features">
+					    <li>Fun, interactive vocabularly builder</li>
+                        <li>60-second speed challenges</li>
+                        <li>Proven memory retention strategy</li>
+                        <li>High score feature</li>
+                        <li>100% FREE</li>
+                    </ul>
+                    <div class="product-btn-container">
+                        <a href="lexiflash.html" class="product-btn">Learn More</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-icon"><img src="verse-icon.jpg" width="80px" height="80px"></div>
+                    <h3 class="product-title">Lexi<span class="product-title-end">Verse</span></h3>
+                    <p class="product-slogan">"Explore English Worldwide"</p>
+                    <div class="product-age">Intermediate+</div>
+                    <p class="product-description">Compare English variations across US, UK, Australia, NZ, South Africa, and Canada.</p>
+                    <ul class="product-features">
+                        <li>Regional vocabulary differences</li>
+                        <li>Pronunciation guides</li>
+                        <li>Idioms and slang</li>
+                        <li>Cultural contexts</li>
+                        <li>Spelling variations</li>
+                    </ul>
+                    <div class="product-btn-container">
+                        <a href="product-template.html" class="product-btn">Learn More</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-icon"><img src="grammar-icon.jpg" width="80px" height="80px"></div>
+                    <h3 class="product-title">Lexi<span class="product-title-end">Grammar</span></h3>
+                    <p class="product-slogan">"Grammar Made Clear"</p>
+                    <div class="product-age">All Levels</div>
+                    <p class="product-description">Comprehensive grammar reference with real-world examples.</p>
+                    <ul class="product-features">
+                        <li>Searchable grammar database</li>
+                        <li>Real-world examples</li>
+                        <li>Quick reference guides</li>
+                        <li>Easy-to-follow video explanations</li>
+                        <li>Add your own notes</li>
+                    </ul>
+                    <div class="product-btn-container">
+                        <a href="lexigrammar.html" class="product-btn">Learn More</a>
+                    </div>
+                </div>
+				
+                <div class="product-card">
+                    <div class="product-icon"><img src="play-icon.jpg" width="80px" height="80px"></div>
+                    <h3 class="product-title">Lexi<span class="product-title-end">Play</span></h3>
+                    <p class="product-slogan">"Easy games, Easy learn!"</p>
+                    <div class="product-age">Ages 3+</div>
+                    <p class="product-description">Fun and interactive English for beginners.</p>
+                    <ul class="product-features">
+                        <li>Engaging educational games</li>
+                        <li>Word matching</li>
+                        <li>Sentence building</li>
+                        <li>Listening skills practice</li>
+                        <li>100% Free</li>
+                    </ul>
+                    <div class="product-btn-container">
+                        <a href="lexiplay.html" class="product-btn">Learn More</a>
+                    </div>
+                </div>	
+
+                <div class="product-card">
+                    <div class="product-icon"><img src="write-icon.jpg" width="80px" height="80px"></div>
+                    <h3 class="product-title">Lexi<span class="product-title-end">Write</span></h3>
+                    <p class="product-slogan">"Write it right — every time"</p>
+                    <div class="product-age">All Levels</div>
+                    <p class="product-description">Detailed feedback on your writing.</p>
+                    <ul class="product-features">
+                        <li>Guided topic questions everyday</li>
+                        <li>Choose styles, genres and topics</li>
+                        <li>Feedback on grammar, clarity, tone etc. </li>
+                        <li>Useful uick reference guides</li>
+                        <li>Sample answers to compare</li>
+                    </ul>
+                    <div class="product-btn-container">
+                        <a href="lexiwrite.html" class="product-btn">Learn More</a>
+                    </div>
+                </div>				
+            </div>
+        </div>
+    </section>
+    
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">100K+</div>
+                    <div class="stat-label">Active Learners</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">95%</div>
+                    <div class="stat-label">Improvement Rate</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">#1</div>
+                    <div class="stat-label">Educational App in Asia</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">4</div>
+                    <div class="stat-label">Countries Served</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="method" id="method">
+    <div class="container">
+        <div class="method-content">
+            <div class="method-chart">
+                <h4>English Progress with Lexi Apps</h4>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 95%"></div>
+                </div>
+                <div style="text-align: right; margin-bottom: 30px;">95% Improvement</div>
+                
+                <h4>Traditional Methods</h4>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 60%; background: #94a3b8;"></div>
+                </div>
+                <div style="text-align: right;">60% Improvement</div>
+            </div>
+            <div class="method-text">
+                <h3>Proven Educational Methodology</h3>
+                <p>Our approach combines the latest in language acquisition research with engaging interactive technology. We use:</p>
+                <ul style="margin-top: 20px; padding-left: 20px;">
+                    <li style="margin-bottom: 10px;">Spaced repetition algorithms for optimal retention</li>
+                    <li style="margin-bottom: 10px;">Contextual learning through storytelling</li>
+                    <li style="margin-bottom: 10px;">Adaptive difficulty levels</li>
+                    <li style="margin-bottom: 10px;">Multi-sensory engagement (visual, auditory, kinesthetic)</li>
+                    <li style="margin-bottom: 10px;">Immediate feedback loops</li>
+                </ul>
+                <div style="margin-top: 25px;">
+                    <a href="approach.html" class="cta-button" style="background: var(--accent-yellow);">Learn About Our Science-Based Approach</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    
+<section id="testimonial">
+  <h2 class="section-title">What Our Learners Say</h2><p></p>
+  <div class="testimonials">
+    <div class="testimonial">
+      <div class="testimonial-header">
+        <div class="testimonial-photo">
+          <img src="lim.jpg" alt="Jinny Lim" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+        </div>
+        <div class="testimonial-meta">
+          <h4>Jinny Lim</h4>
+          <p>Mother, Korea</p>
+        </div>
+      </div>
+      <p class="testimonial-quote">"Sujin looks forward to her LexiTales time every day. She's learning English without even realizing it's educational!"</p>
+    </div>
+    <div class="testimonial">
+      <div class="testimonial-header">
+        <div class="testimonial-photo">
+          <img src="tanaka.jpg" alt="Hiroshi Tanaka" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+        </div>
+        <div class="testimonial-meta">
+          <h4>Hiroshi Tanaka</h4>
+          <p>Father of Two, Japan</p>
+        </div>
+      </div>
+      <p class="testimonial-quote">"The dual-language support helps both my sons connect new English words to concepts they already understand in Japanese. Their progress has been remarkable."</p>
+    </div>
+    <div class="testimonial">
+      <div class="testimonial-header">
+        <div class="testimonial-photo">
+          <img src="guo.jpg" alt="Ya Wen Guo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+        </div>
+        <div class="testimonial-meta">
+          <h4>Ya Wen Guo</h4>
+          <p>ESL Teacher, Taiwan</p>
+        </div>
+      </div>
+      <p class="testimonial-quote">"I recommend LexiBridge to all my students' parents. The natural language acquisition approach aligns perfectly with modern language teaching methods."</p>
+    </div>
+  </div>
+</section>
+
+
+ <footer>
+    <div class="footer-content">
+      <div class="footer-column">
+        <h3>LexiBridge</h3>
+        <ul class="footer-links">
+          <li><a href="#">About Us</a></li>
+          <li><a href="approach.html">Our Approach</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Resources</h3>
+        <ul class="footer-links">
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Legal</h3>
+        <ul class="footer-links">
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Content Guidelines</a></li>
+          <li><a href="#">Cookie Policy</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Connect</h3>
+        <ul class="footer-links">
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">TikTok</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      © 2025 LexiBridge English. All rights reserved.
+    </div>
+  </footer>
+
+
+    <script>
+        // Simple language switcher
+        document.querySelectorAll('.language-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.language-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                // In a real implementation, this would trigger language change
+            });
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
