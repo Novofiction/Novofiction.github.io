@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buyers Haven - Norfolk</title>
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    
+    <style>
+        /* === GLOBAL STYLES === */
+        :root {
+          --toast: #2C2C2E;
+          --gray: #fdfff8;
+          --white: #F4F5F0;
+		  --blue: #464B65;
+          --font-main: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+          --shadow: 0 4px 20px rgba(0,0,0,0.1);
+          --transition: all 0.3s ease;
+        }
+
+        * {
+          box-sizing: border-box;
+        }
+
+        body {
+          margin: 0;
+          padding: 0;
+          font-family: var(--font-main);
+          background-color: var(--white);
+          color: var(--toast);
+          line-height: 1.6;
+        }
+
+        .container {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 2rem;
+        }
+        
+
+        /* === NAVIGATION === */
+        nav {
+          background-color: var(--yellow);
+          padding: 1rem 0;
+          position: fixed;
+          width: 100%;
+          top: 0;
+          z-index: 1000;
+          box-shadow: var(--shadow);
+        }
+
+        nav .nav-container {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 2rem;
+        }
+
+        nav .logo {
+          display: flex;
+          align-items: center;
+          text-decoration: none;
+        }
+
+        nav .logo-img {
+          height: 40px;
+          margin-right: 0.5rem;
+        }
+
+        nav .logo-text {
+          color: var(--blue);
+          font-size: 1.5rem;
+          font-weight: bold;
+        }
+
+        .nav-links {
+          display: flex;
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          align-items: center;
+        }
+
+        .nav-links li {
+          margin-left: 2rem;
+        }
+
+        nav a {
+          color: var(--blue);
+          text-decoration: none;
+          font-weight: 500;
+          transition: var(--transition);
+        }
+
+        nav a:hover {
+          color: var(--gray);
+        }
+
+
+        /* === HERO SECTION === */
+        .hero {
+          height: 100vh;
+          background: linear-gradient(135deg, rgba(221,215,215,0.8), rgba(244,245,240,0.2)), 
+                      url('heroholder.jpg') center/cover;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          color: var(--toast);
+          position: relative;
+        }
+
+        .hero-content {
+          z-index: 2;
+          max-width: 800px;
+          padding: 2rem;
+        }
+
+        .app-icon-large {
+          width: 120px;
+          height: 120px;
+          margin: 0 auto 1rem;
+          border-radius: 25px;
+          box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+        }
+
+        .hero h1 {
+          font-size: clamp(2.5rem, 5vw, 4rem);
+          margin-bottom: 0.75rem;
+          font-weight: 500;
+          letter-spacing: -1px;
+        }
+
+        .hero .tagline {
+          font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+          margin-bottom: 0.75rem;
+          font-weight: 500;
+        }
+
+        .hero p {
+          font-size: clamp(1.1rem, 2vw, 1.3rem);
+          margin-bottom: 1.5rem;
+          opacity: 0.95;
+          max-width: 700px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        /* === DOWNLOAD BUTTONS === */
+        .download-buttons {
+          display: flex;
+          gap: 1rem;
+          justify-content: center;
+          align-items: center;
+          flex-wrap: wrap;
+          margin-top: 2rem;
+        }
+
+        .download-btn img {
+          height: 60px;
+          transition: var(--transition);
+        }
+
+        .download-btn img:hover {
+          transform: scale(1.05);
+        }
+
+        /* === BUTTON STYLES === */
+        .button {
+          background-color: var(--blue);
+          color: var(--white);
+          padding: 1rem 2rem;
+          border: none;
+          border-radius: 50px;
+          font-size: 1rem;
+          font-weight: 600;
+          cursor: pointer;
+          text-decoration: none;
+          display: inline-block;
+          transition: var(--transition);
+          box-shadow: var(--shadow);
+        }
+
+        .button:hover {
+          background-color: var(--blue);
+          transform: translateY(-2px);
+          box-shadow: 0 6px 25px rgba(255,107,0,0.1);
+        }
+
+        /* === SECTION STYLES === */
+        section {
+          padding: 2rem 0;
+        }
+
+        .section-white {
+          background-color: var(--white);
+        }
+
+        .section-light {
+          background-color: var(--gray);
+        }
+
+        .section-title {
+          text-align: center;
+          margin-bottom: 1rem;
+        }
+
+        .section-title h2 {
+          font-size: clamp(2rem, 4vw, 3rem);
+          margin-bottom: 1rem;
+          font-weight: 300;
+          color: var(--toast);
+        }
+
+        .section-title p {
+          font-size: 1.2rem;
+          color: var(--toast);
+          max-width: 700px;
+          margin: 0 auto;
+        }
+
+        /* === FEATURES GRID === */
+        .features-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+          gap: 2.5rem;
+          margin-top: 1rem;
+        }
+
+        .feature-item {
+          background: var(--white);
+          padding: 1rem;
+          border-radius: 15px;
+          box-shadow: var(--shadow);
+          transition: var(--transition);
+          text-align: center;
+        }
+
+        .feature-item:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+
+        .feature-icon {
+          font-size: 5rem;
+		  color: var(--blue);
+          margin-bottom: 1rem;
+          display: block;
+        }
+		
+		.feature-icon2 {
+          font-size: 3rem;
+		  color: var(--blue);
+          margin-bottom: 0.2rem;
+          display: block;
+        }
+
+        .feature-item h3 {
+          font-size: 1.5rem;
+          margin-bottom: 1rem;
+          color: var(--toast);
+        }
+
+        .feature-item p {
+          color: #666;
+          line-height: 1.8;
+        }
+
+        /* === CENTERED LIST STYLING === */
+        .section-title ul {
+          display: inline-block;
+          text-align: left;
+          margin: 1.5rem auto;
+          padding-left: 1.5rem;
+        }
+
+        .section-title ul li {
+          margin-bottom: 0.5rem;
+          line-height: 1.6;
+        }
+
+ 
+       /* === SCREENSHOTS GRID === */
+.screenshots-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.screenshot img {
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .screenshots-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .screenshots-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* === STATS SECTION === */
+        .stats-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+          gap: 2rem;
+          text-align: center;
+		  margin-top: 0.2rem;
+        }
+
+        .stat-item h3 {
+          font-size: 1.5rem;
+          color: var(--royal-orange);
+          margin-bottom: 0.5rem;
+          font-weight: 700;
+        }
+
+        .stat-item p {
+          font-size: 1rem;
+          color: #666;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+        }
+		
+		/* === TESTIMONIALS === */
+        .testimonials-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          gap: 2rem;
+          margin-top: 4rem;
+        }
+
+        .testimonial-card {
+          background: var(--white);
+          padding: 2rem;
+          border-radius: 12px;
+          box-shadow: var(--shadow);
+          text-align: center;
+          transition: var(--transition);
+          position: relative;
+        }
+
+        .testimonial-card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+
+        .testimonial-card::before {
+          content: '"';
+          position: absolute;
+          top: -10px;
+          left: 20px;
+          font-size: 4rem;
+          color: var(--royal-orange);
+          font-family: serif;
+          line-height: 1;
+        }
+
+        .testimonial-text {
+          font-size: 1.1rem;
+          line-height: 1.6;
+          color: var(--charcoal);
+          margin-bottom: 1.5rem;
+          font-style: italic;
+        }
+
+        .testimonial-author {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 1rem;
+        }
+
+        .author-photo {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          background: linear-gradient(135deg, var(--royal-orange), #ff8533);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: white;
+          font-weight: bold;
+          font-size: 1.2rem;
+        }
+
+        .author-info h4 {
+          margin: 0;
+          color: var(--charcoal);
+          font-size: 1rem;
+          font-weight: 600;
+        }
+
+        .author-info p {
+          margin: 0;
+          color: #666;
+          font-size: 0.9rem;
+        }
+        
+
+        /* === CTA SECTION === */
+        .cta-section {
+          background-color: var(--white);
+          color: var(--blue);
+          text-align: center;
+          padding: 5rem 0.5rem;
+        }
+
+        .cta-section h2 {
+          font-size: clamp(2rem, 4vw, 3rem);
+          margin-bottom: 1.5rem;
+          font-weight: 300;
+        }
+
+        .cta-section p {
+          font-size: 1.2rem;
+          margin-bottom: 2rem;
+          opacity: 0.95;
+        }
+
+        /* === FOOTER === */
+        footer {
+          background-color: var(--gray);
+          color: var(--blue);
+          padding: 1rem 0 1.5rem;
+        }
+		
+		.logo-img {
+          height: 180px;
+          margin-right: 0;
+        }
+
+        .footer-content {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 3rem;
+          margin-bottom: 0.5rem;
+          flex-wrap: wrap;
+        }
+
+        .footer-section {
+          text-align: left;
+        }
+
+        .footer-section:first-child {
+          display: flex;
+          align-items: center;
+        }
+
+        .footer-section:last-child h4 {
+          margin-bottom: 0.3rem;
+        }
+
+        /* Stack vertically on mobile */
+        @media (max-width: 600px) {
+          .footer-content {
+            flex-direction: column;
+            gap: 1.5rem;
+          }
+          
+          .footer-section {
+            text-align: center;
+          }
+        }
+
+        .footer-section h4 {
+          margin-bottom: 0.5rem;
+          color: var(--blue);
+        }
+
+        .footer-section a {
+          display: block;
+          color: var(--white);
+          text-decoration: none;
+          margin-bottom: 0.5rem;
+          transition: var(--transition);
+        }
+
+        .footer-section a:hover {
+          color: var(--royal-orange);
+        }
+
+        .footer-bottom {
+          text-align: center;
+          padding-top: 1rem;
+          border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* === RESPONSIVE === */
+        @media (max-width: 768px) {
+          .step {
+            flex-direction: column !important;
+            text-align: center;
+          }
+
+          .step-number {
+            font-size: 3rem;
+          }
+
+          nav .nav-links {
+            display: none;
+          }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+        <div class="logo">
+           
+                
+            </a>
+        </div>
+            <ul class="nav-links">
+                <li><a href="#screenshots">Our solution</a></li>
+				<li><a href="#features">The cottage</a></li>               
+                <li><a href="#stats">Questions?</a></li>
+				<li><a href="#test">Testimonials</a></li>
+				<li><a href="#contact">Book</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+        
+            <h1>Short-term homes for buyers in limbo</h1>
+            <h2>A calm, furnished place to live while you wait for your new home to be
+ready</h2>
+            <p>Secure storage included, so you don’t unpack twice.</p>
+
+            <a href="#apps" class="button">Book Now</a>
+        </div>
+    </section>
+	
+	    <!-- Screenshots Section -->
+    <section id="screenshots" class="section-white">
+        <div class="container">
+            <div class="section-title">
+                <h2>Stuck between homes?</h2>
+                <p>You've sold your house. Your new one isn't ready yet. Suddenly you're under pressure to decide:</p>
+		   </div>
+            
+           <div class="features-grid">
+                <div class="feature-item">
+                    <span class="feature-icon"><i data-lucide="home"></i></span>
+                    <h4>Where to live</h4>
+                    <p>Our furnished 2-bedroom cottage in the heart of Norfolk is available for <strong>short-term rental</strong> (4 weeks min), and comes with <strong>utilities and Wi-Fi included</strong></p>
+                </div>
+                
+                <div class="feature-item">
+                    <span class="feature-icon"><i data-lucide="luggage"></i></span>
+                    <h4>What to do with your belongings</h4>
+                    <p>With Buyer's Haven there's no need to unpack twice. Included in the price is a <strong>private 20ft storage container</strong> (extra charge after the first four weeks).  </p>
+                </div>
+                
+                <div class="feature-item">
+                    <span class="feature-icon"><i data-lucide="pound-sterling"></i></span>
+                    <h4>How much it's going to cost</h4>
+                    <p>The Buyer's Haven can <strong>save you hundreds of pounds per week</strong>. Typical AirBnb cost : £600-700 per week. Typical 6 month rental total cost: £6000. The buyer's haven: £475 per week, alongside weekly flexibility and a private storage container </p>
+                </div>
+                  
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="section-light">
+        <div class="container">
+            <div class="section-title">
+                <h2>What is The Buyer's Haven?</h2>
+                <p>The Buyer’s Haven is a short-term home for people who’ve sold their house but can’t move into
+their new one yet. It gives you <strong>a furnished place to live, weekly flexibility, and time to wait without pressure</strong>, so you can pause, breathe, and live normally until your next move is ready.
+</p>
+            </div>
+            
+            <div class="screenshots-grid">
+                <div class="screenshot">
+                    <img src="heroholder.jpg" alt="*">
+                </div>
+                <div class="screenshot">
+                    <img src="heroholder.jpg" alt="*">
+                </div>
+                <div class="screenshot">
+                    <img src="heroholder.jpg" alt="*">
+                </div>
+                <div class="screenshot">
+                    <img src="heroholder.jpg" alt="*">
+                </div>
+				<div class="screenshot">
+                    <img src="heroholder.jpg" alt="*">
+                </div><div class="screenshot">
+                    <img src="heroholder.jpg" alt="*">
+                </div>
+            </div>
+			<p></p>
+			
+			<div class="section-title">
+                
+                <h3>A calm, fully furnished home designed specifically for buyers waiting to move.</h3>
+<p>This two-bedroom Buyer’s Haven is located in <strong>Watton, Norfolk</strong> and offers everything needed to
+live comfortably while your new home is being finalised — without monthly contracts, pressure,
+or nightly Airbnb costs.</p>
+<p>
+<ul>
+<li>Two-bedroom, fully furnished cottage</li>
+<li>One bathroom</li>
+<li>Private, secluded garden</li>
+<li>Convenient parking</li>
+<li>Self-storage container included</li>
+<li>Utilities and Wi-Fi included</li>
+</ul>
+</p>
+            </div>
+			
+        </div>
+    </section>
+
+     
+	
+	 <!-- get in touch Section -->
+    <section id="stats" class="section-gray">
+        <div class="container">
+            <div class="section-title">
+                <h2>Questions?</h2>
+                <p>If you’re unsure whether The Buyer’s Haven is right for your situation, feel free to reach out.
+We’re happy to talk things through and explain your options clearly</p>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3><span class="feature-icon"><i data-lucide="mail"></i></span></h3>
+                    <p>thebuyershaven@norfolk.co.uk</a></p>
+                </div>
+                <div class="stat-item">
+                    <h3><span class="feature-icon"><i data-lucide="phone"></i></span></h3>
+                    <p>07432 708105</p>
+                </div>
+                <div class="stat-item">
+                    <h3><span class="feature-icon"><i data-lucide="facebook"></i></span></h3>
+                    <p>The Buyer’s Haven Norfolk</p>
+                </div>
+               
+            </div>
+		</div>
+</section>		
+			
+
+			<!-- Testimonials -->
+			<section id="test" class="section-light">
+        <div class="container">
+<div class="section-title" style="margin-top: 4rem; margin-bottom: 2rem;">
+    <h2>What Our Residents Say</h2>
+    <p>Real feedback from renters at The Buyer's Haven</p>
+</div>
+<div class="testimonials-grid">
+    <div class="testimonial-card">
+        <div class="testimonial-text">
+            A complete life-saver! Took all the stress away from our mis-matched completion dates!
+        </div>
+        <div class="testimonial-author">
+            
+            <div class="author-info">
+                <h4>David M.</h4>
+                <p>Arbroath</p>
+            </div>
+        </div>
+    </div>
+    <div class="testimonial-card">
+        <div class="testimonial-text">
+            A beautifully decorated cottage that was a delight to stay in. The included storage container really helped.
+        </div>
+        <div class="testimonial-author">
+            
+            <div class="author-info">
+                <h4>Yuki</h4>
+                <p>London</p>
+            </div>
+        </div>
+    </div>
+    <div class="testimonial-card">
+        <div class="testimonial-text">
+            We were only moving a few miles but the new build wasn't ready. Saved us thousands of pounds!
+        </div>
+        <div class="testimonial-author">
+            
+            <div class="author-info">
+                <h4>Sally</h4>
+                <p>Norwich</p>
+            </div>
+        </div>
+    </div>
+</div>
+        </div>
+    </section>
+	
+	
+
+    <!-- CTA Section -->
+    <section id="download" class="cta-section">
+        <div class="container">
+            <h2>Affordable, flexible, peace of mind</h2>
+            <p><span class="feature-icon2"><i data-lucide="check"></i></span>£475 per week (min 4 weeks), weekly thereafter. 
+			<span class="feature-icon2"><i data-lucide="check"></i></span>4 week's private container storage included (then £35/week)</p>
+            
+            <a href="#apps" class="button">Book Now</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="logo">
+            <a href="index.html">
+                <img src="image0.png" alt="*" class="logo-img">
+            </a>
+        </div>
+                </div>
+                
+                
+                <div class="footer-section">
+                    <h4>thebuyershaven@norfolk.co.uk</h4>
+					<h4>07432 708105</h4>
+                    
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 The Buyer's Haven. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const navHeight = document.querySelector('nav').offsetHeight;
+                    const targetPosition = target.offsetTop - navHeight;
+
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Contact email obfuscation
+        document.getElementById('contact-link').addEventListener('click', function() {
+            location.href = 'mailto:' + ['info','buyershaven'].join('@');
+        });
+    </script>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+<script>
+  lucide.createIcons();
+</script>
+</body>
+</html>
