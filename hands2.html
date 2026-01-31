@@ -1,0 +1,1300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H & S English Academy - Learn English Naturally</title>
+	
+	<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+	<link rel="manifest" href="/site.webmanifest">
+	
+    <style>
+        /* === GLOBAL STYLES === */
+        :root {
+          --charcoal: #663399;
+          --royal-orange: #669933;
+          --korean-blue: #0047A0;
+          --korean-red: #CD2E3A;
+          --light-gray: #f4f4f4;
+		  --dark-gray: #666666;
+          --white: #ffffff;
+		  --blue: #704ffe;
+          --font-main: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+          --shadow: 0 4px 20px rgba(0,0,0,0.1);
+          --transition: all 0.3s ease;
+        }
+
+        * {
+          box-sizing: border-box;
+        }
+
+        body {
+          margin: 0;
+          padding: 0;
+          font-family: var(--font-main);
+          background-color: var(--white);
+          color: var(--charcoal);
+          line-height: 1.6;
+        }
+
+        .container {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 1rem;
+        }
+		
+		.sound {
+            color: #d14d22;
+        }
+		
+		.perfect {
+            color: var(--royal-orange);
+        }
+
+        /* === NAVIGATION === */
+        nav {
+          background-color: var(--white);
+          padding: 1rem 0;
+          position: fixed;
+          width: 100%;
+          top: 0;
+          z-index: 1000;
+          box-shadow: var(--shadow);
+          transition: var(--transition);
+        }
+
+        nav .nav-container {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 1rem;
+        }
+
+        nav .logo {
+          display: flex;
+          align-items: center;
+        }
+
+        nav .logo-img {
+          height: 40px;
+          margin-right: 0.5rem;
+        }
+
+        nav .logo-text {
+          color: var(--charcoal);
+          font-size: clamp(1rem, 4vw, 1.5rem);
+          font-weight: bold;
+        }
+
+        .nav-links {
+          display: flex;
+          list-style: none;
+          margin: 0;
+          padding: 0;
+        }
+
+        .nav-links li {
+          margin-left: 2rem;
+        }
+
+        nav a {
+          color: var(--charcoal);
+          text-decoration: none;
+          font-weight: 500;
+          transition: var(--transition);
+        }
+
+        nav a:hover {
+          color: var(--charcoal);
+        }
+
+        /* Mobile Menu */
+        .menu-toggle {
+          display: none;
+          background: none;
+          border: none;
+          color: var(--white);
+          font-size: 1.5rem;
+          cursor: pointer;
+        }
+        
+        /* Mobile navigation adjustments */
+        @media (max-width: 768px) {
+          nav .nav-container {
+            padding: 0 0.75rem;
+          }
+          
+          .nav-links li {
+            margin-left: 1rem;
+          }
+          
+          nav a {
+            font-size: 0.9rem;
+          }
+        }
+        
+        @media (max-width: 480px) {
+          nav .nav-container {
+            padding: 0 0.5rem;
+          }
+          
+          .nav-links li {
+            margin-left: 0.5rem;
+          }
+          
+          nav a {
+            font-size: 0.8rem;
+          }
+          
+          nav .logo-img {
+            height: 32px;
+          }
+        }
+
+        /* === HERO SECTION === */
+        .hero {
+          min-height: 15vh;
+		  background: var(--white);
+          display: flex;
+          align-items: center;
+          color: var(--charcoal);
+          padding-top: 80px;
+          padding-bottom: 1rem;
+        }
+
+        .hero-content {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 3rem;
+          align-items: center;
+          width: 100%;
+        }
+
+        .hero-text {
+          text-align: left;
+        }
+
+        .hero-graphic {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .app-icon-large {
+          width: 300px;
+          height: 300px;
+          border-radius: 25px;
+          box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+        }
+
+        .hero h1 {
+          font-size: clamp(2.5rem, 5vw, 4rem);
+          margin-bottom: 0.75rem;
+          font-weight: 300;
+          letter-spacing: -1px;
+        }
+
+        .hero .tagline {
+          font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+          margin-bottom: 0.75rem;
+          font-weight: 500;
+        }
+
+        .hero p {
+          font-size: clamp(1.1rem, 2vw, 1.3rem);
+          margin-bottom: 1.5rem;
+          opacity: 0.95;
+        }
+
+        /* Mobile responsiveness for hero */
+        @media (max-width: 768px) {
+          .hero-content {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+          }
+
+          .hero-text {
+            text-align: center;
+          }
+
+          .app-icon-large {
+            width: 200px;
+            height: 200px;
+          }
+          
+          .hero h1 {
+            font-size: clamp(1.75rem, 8vw, 2.5rem);
+          }
+          
+          .hero .tagline {
+            font-size: clamp(1.1rem, 5vw, 1.3rem);
+          }
+          
+          .hero p {
+            font-size: clamp(0.95rem, 4vw, 1.1rem);
+          }
+        }
+
+        /* === DOWNLOAD BUTTONS === */
+        .download-buttons {
+          display: flex;
+          gap: 1rem;
+          justify-content: center;
+          align-items: center;
+          flex-wrap: wrap;
+          margin-top: 2rem;
+        }
+
+        .download-btn img {
+          height: 60px;
+          transition: var(--transition);
+        }
+
+        .download-btn img:hover {
+          transform: scale(1.05);
+        }
+
+        /* === BUTTON STYLES === */
+        .button {
+          background-color: var(--royal-orange);
+          color: var(--white);
+          padding: 1rem 2rem;
+          border: none;
+          border-radius: 50px;
+          font-size: 1rem;
+          font-weight: 600;
+          cursor: pointer;
+          text-decoration: none;
+          display: inline-block;
+          transition: var(--transition);
+          box-shadow: var(--shadow);
+        }
+
+        .button:hover {
+          background-color: var(--dark-gray);
+          transform: translateY(-2px);
+          box-shadow: 0 6px 25px rgba(255,107,0,0.3);
+        }
+
+        /* === SECTION STYLES === */
+        section {
+          padding: 2rem 0;
+        }
+
+        .section-white {
+          background-color: var(--white);
+        }
+		
+		.section-purple {
+          background-color: var(--white);
+        }
+
+        .section-light {
+          background-color: var(--light-gray);
+        }
+
+        .section-title {
+          text-align: center;
+          margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+          font-size: clamp(2rem, 4vw, 2.5rem);
+          margin-bottom: 1rem;
+          font-weight: 300;
+        }
+
+        .section-title p {
+          font-size: 1.1rem;
+          color: #666;
+          max-width: 600px;
+          margin: 0 auto;
+        }
+
+        /* === FEATURES GRID === */
+        .features-grid {
+		  background: var(--white);
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+          gap: 2.5rem;
+          margin-top: 1rem;
+        }
+
+        .feature-card {
+          background: var(--white);
+          padding: 2rem;
+          border-radius: 12px;
+          box-shadow: var(--shadow);
+          text-align: center;
+          transition: var(--transition);
+        }
+
+        .feature-card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+
+        .feature-icon {
+          width: 60px;
+          height: 60px;
+          background-color: #d14d22;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin: 0 auto 1rem;
+          font-size: 1.5rem;
+          color: var(--white);
+        }
+
+        /* === CURRICULUM CARDS === */
+        .curriculum-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 2rem;
+          margin-top: 3rem;
+        }
+
+        .curriculum-card {
+          background: var(--white);
+          padding: 2rem;
+          border-radius: 12px;
+          box-shadow: var(--shadow);
+          text-align: left;
+          transition: var(--transition);
+          border-left: 4px solid #d14d22;
+        }
+
+        .curriculum-card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+
+        .curriculum-card h4 {
+          color: var(--charcoal);
+          font-size: 1.2rem;
+          margin-bottom: 0.5rem;
+        }
+
+        .curriculum-card .phase-title {
+          color: var(--charcoal);
+          font-size: 1.1rem;
+          font-weight: 600;
+          margin-bottom: 1rem;
+        }
+
+        .curriculum-card .focus-label {
+          color: #666;
+          font-size: 0.9rem;
+          font-weight: 500;
+          margin-bottom: 0.5rem;
+        }
+
+        .curriculum-card .focus-content {
+          color: var(--charcoal);
+          font-size: 1rem;
+          line-height: 1.6;
+        }
+
+        /* === APP SHOWCASE SECTION === */
+        .showcase-content {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+          gap: 3rem;
+          margin-top: 3rem;
+        }
+
+        .preview-placeholder,
+        .feedback-placeholder {
+          background: var(--white);
+          padding: 4rem 2rem;
+          border-radius: 12px;
+          box-shadow: var(--shadow);
+          text-align: center;
+          border: 2px dashed #ddd;
+          transition: var(--transition);
+        }
+
+        .preview-placeholder:hover,
+        .feedback-placeholder:hover {
+          border-color: var(--royal-orange);
+          transform: translateY(-3px);
+        }
+
+        .preview-placeholder p:first-child,
+        .feedback-placeholder p:first-child {
+          font-size: 2rem;
+          margin-bottom: 1rem;
+        }
+
+        .preview-placeholder p:last-child,
+        .feedback-placeholder p:last-child {
+          color: #666;
+          font-size: 1rem;
+        }
+
+        /* === PRICING SECTION === */
+        .pricing-section {
+          background: linear-gradient(35deg, #edeff2, var(--light-gray));
+        }
+
+        .pricing-cards {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+          gap: 2rem;
+          margin-top: 3rem;
+          max-width: 800px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        .pricing-card {
+          background: var(--white);
+          padding: 2.5rem 2rem;
+          border-radius: 16px;
+          box-shadow: var(--shadow);
+          text-align: center;
+          transition: var(--transition);
+          position: relative;
+          border: 2px solid transparent;
+        }
+
+        .pricing-card:hover {
+          transform: translateY(-8px);
+          box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+        }
+
+        .pricing-card.popular {
+          border-color: var(--royal-orange);
+          transform: scale(1.05);
+        }
+
+        .pricing-card.popular::before {
+          content: "Most Popular";
+          position: absolute;
+          top: -10px;
+          left: 50%;
+          transform: translateX(-50%);
+          background: var(--royal-orange);
+          color: white;
+          padding: 0.5rem 1rem;
+          border-radius: 20px;
+          font-size: 0.85rem;
+          font-weight: 600;
+        }
+
+        .pricing-plan {
+          font-size: 1.25rem;
+          font-weight: 600;
+          color: var(--charcoal);
+          margin-bottom: 1rem;
+        }
+
+        .pricing-price {
+          font-size: 2.5rem;
+          font-weight: 700;
+          color: var(--royal-orange);
+          margin-bottom: 0.5rem;
+        }
+
+        .pricing-period {
+          color: #666;
+          margin-bottom: 1rem;
+        }
+
+        .pricing-savings {
+          background: #e8f5e8;
+          color: #2d5d2d;
+          padding: 0.5rem 1rem;
+          border-radius: 20px;
+          font-size: 0.9rem;
+          font-weight: 600;
+          margin-bottom: 1.5rem;
+          display: inline-block;
+        }
+
+        .pricing-features {
+          list-style: none;
+          padding: 0;
+          margin: 1.5rem 0;
+        }
+
+        .pricing-features li {
+          padding: 0.5rem 0;
+          color: #666;
+        }
+
+        .pricing-features li::before {
+          content: "✓";
+          color: var(--royal-orange);
+          font-weight: bold;
+          margin-right: 0.5rem;
+        }
+
+        /* === STATS SECTION === */
+        .stats-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+          gap: 2rem;
+          text-align: center;
+        }
+
+        .stat-item h3 {
+          font-size: 3rem;
+          color: var(--royal-orange);
+          margin-bottom: 0.5rem;
+          font-weight: 700;
+        }
+
+        .stat-item p {
+          font-size: 1rem;
+          color: #666;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+        }
+		
+		/* === TESTIMONIALS === */
+        .testimonials-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          gap: 2rem;
+          margin-top: 4rem;
+        }
+
+        .testimonial-card {
+          background: var(--white);
+          padding: 2rem;
+          border-radius: 12px;
+          box-shadow: var(--shadow);
+          text-align: center;
+          transition: var(--transition);
+          position: relative;
+        }
+
+        .testimonial-card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+
+        .testimonial-card::before {
+          content: '"';
+          position: absolute;
+          top: -10px;
+          left: 20px;
+          font-size: 4rem;
+          color: #d14d22;
+          font-family: serif;
+          line-height: 1;
+        }
+
+        .testimonial-text {
+          font-size: 1.1rem;
+          line-height: 1.6;
+          color: var(--charcoal);
+          margin-bottom: 1.5rem;
+          font-style: italic;
+        }
+
+        .testimonial-author {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 1rem;
+        }
+
+        .author-photo {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          background: linear-gradient(135deg, var(--royal-orange), #ff8533);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: white;
+          font-weight: bold;
+          font-size: 1.2rem;
+        }
+
+        .author-info h4 {
+          margin: 0;
+          color: var(--charcoal);
+          font-size: 1rem;
+          font-weight: 600;
+        }
+
+        .author-info p {
+          margin: 0;
+          color: #666;
+          font-size: 0.9rem;
+        }
+
+        /* === CTA SECTION === */
+        .cta-section {
+          background: linear-gradient(135deg, var(--charcoal), #8c53c6);
+          color: var(--white);
+          text-align: center;
+        }
+
+        .cta-section h2 {
+          font-size: clamp(2rem, 4vw, 2.5rem);
+          margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+          font-size: 1.1rem;
+          margin-bottom: 2rem;
+          opacity: 0.9;
+        }
+
+        .download-buttons {
+          display: flex;
+          justify-content: center;
+          gap: 1rem;
+          flex-wrap: wrap;
+        }
+
+        .download-btn {
+          transition: var(--transition);
+        }
+
+        .download-btn:hover {
+          transform: translateY(-3px);
+        }
+
+        /* === FOOTER === */
+        footer {
+          background-color: var(--light-gray);
+          color: var(--white);
+          text-align: center;
+          padding: 3rem 0 2rem;
+        }
+
+        .footer-content {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+          gap: 2rem;
+          margin-bottom: 2rem;
+          text-align: left;
+        }
+
+        .footer-section h4 {
+          color: var(--royal-orange);
+          margin-bottom: 1rem;
+        }
+
+        .footer-section a {
+          color: #ccc;
+          text-decoration: none;
+          display: block;
+          margin-bottom: 0.5rem;
+          transition: var(--transition);
+        }
+
+        .footer-section a:hover {
+          color: var(--royal-orange);
+        }
+
+        .footer-bottom {
+          border-top: 1px solid #444;
+          padding-top: 2rem;
+          text-align: center;
+          color: #999;
+        }
+		
+		/* === LANGUAGE DROPDOWN === */
+.language-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.language-toggle {
+  background: none;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: var(--transition);
+  min-width: 70px;
+  justify-content: center;
+}
+
+.language-toggle:hover {
+  border-color: var(--royal-orange);
+  background-color: rgba(255, 107, 0, 0.1);
+}
+
+.language-dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  background-color: var(--white);
+  min-width: 120px;
+  box-shadow: var(--shadow);
+  border-radius: 8px;
+  z-index: 1001;
+  overflow: hidden;
+  margin-top: 0.5rem;
+}
+
+.language-dropdown.active .language-dropdown-content {
+  display: block;
+}
+
+.language-option {
+  display: block;
+  padding: 0.75rem 1rem;
+  color: var(--charcoal);
+  text-decoration: none;
+  transition: var(--transition);
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.language-option:hover {
+  background-color: var(--light-gray);
+  color: var(--royal-orange);
+}
+
+.language-option.active {
+  background-color: var(--royal-orange);
+  color: var(--white);
+}
+
+.flag-icon {
+  width: 20px;
+  height: 15px;
+  border-radius: 2px;
+  display: inline-block;
+}
+
+.flag-en { 
+  background: linear-gradient(to bottom, #012169 33%, white 33%, white 66%, #C8102E 66%); 
+}
+.flag-ko { 
+  background: linear-gradient(to bottom, white 25%, #CD2E3A 25%, #CD2E3A 50%, #0047A0 50%, #0047A0 75%, white 75%); 
+}
+.flag-ja { 
+  background: radial-gradient(circle at center, #BC002D 30%, white 32%); 
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .language-dropdown {
+    margin-top: 1rem;
+  }
+  
+  .language-dropdown-content {
+    position: static;
+    box-shadow: none;
+    background: #3a3a3c;
+    margin-top: 0;
+    border-radius: 0;
+  }
+  
+  .language-option {
+    color: white;
+    border-bottom: 1px solid #555;
+  }
+  
+  .language-option:hover {
+    background-color: #555;
+    color: var(--royal-orange);
+  }
+}
+
+        /* === MOBILE STYLES === */
+        @media (max-width: 768px) {
+          .nav-links {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: var(--charcoal);
+            flex-direction: column;
+            box-shadow: var(--shadow);
+          }
+
+          .nav-links.active {
+            display: flex;
+          }
+
+          .nav-links li {
+            margin: 0;
+            border-bottom: 1px solid #444;
+          }
+
+          .nav-links a {
+            display: block;
+            padding: 1rem 2rem;
+          }
+
+          .menu-toggle {
+            display: block;
+          }
+
+          .hero {
+            height: 60vh;
+          }
+
+          .button-secondary {
+            margin-left: 0;
+            margin-top: 1rem;
+            display: block;
+          }
+
+          section {
+            padding: 1rem 0;
+          }
+
+          .features-grid {
+            grid-template-columns: 1fr;
+          }
+
+          .curriculum-grid {
+            grid-template-columns: 1fr;
+          }
+
+          .showcase-content {
+            grid-template-columns: 1fr;
+          }
+
+          .pricing-cards {
+            grid-template-columns: 1fr;
+          }
+
+          .pricing-card.popular {
+            transform: none;
+          }
+
+          .stats-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
+
+          .footer-content {
+            grid-template-columns: 1fr;
+            text-align: center;
+          }
+        }
+		
+		@media (max-width: 768px) { .hero { height: 100vh; /* Keep full height but ensure proper spacing */ padding-top: 30px; /* Add padding to account for fixed nav */ display: flex; align-items: center; justify-content: center; } .hero-content { padding: 1rem; /* Reduce padding on mobile */ max-width: 100%; /* Ensure content doesn't overflow */ } .hero h1 { font-size: clamp(1.8rem, 8vw, 2.5rem); /* More conservative sizing */ line-height: 1.2; /* Tighter line height */ margin-bottom: 1rem; /* Reduce bottom margin */ } .hero h3 { font-size: clamp(1rem, 4vw, 1.2rem); /* Add responsive sizing for subtitle */ margin-bottom: 1rem; line-height: 1.3; } .hero p { font-size: clamp(0.9rem, 3.5vw, 1rem); /* Smaller paragraph text */ margin-bottom: 1.5rem; /* Reduce bottom margin */ line-height: 1.5; } /* Fix button layout on mobile */ .hero .button { display: block; width: 100%; max-width: 280px; margin: 0 auto 1rem auto; text-align: center; } .button-secondary { margin-left: 0; margin-top: 0.5rem; display: block; width: 100%; max-width: 280px; margin-left: auto; margin-right: auto; } } /* Additional fix for very small screens */ @media (max-width: 480px) { .hero { padding-top: 70px; /* Adjust for smaller nav on very small screens */ } .hero h1 { font-size: clamp(1.5rem, 7vw, 2rem); } .hero-content { padding: 0.5rem; } }
+
+        @media (max-width: 480px) {
+          .container {
+            padding: 0 1rem;
+          }
+
+          nav .nav-container {
+            padding: 0 1rem;
+          }
+
+          .stats-grid {
+            grid-template-columns: 1fr;
+          }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+    <div class="nav-container">
+        <div class="logo">
+            <a href="index.html">
+                <img src="hslogo54.png" alt="H&S English" class="logo-img">
+            </a>
+        </div>
+		<div><p><strong>H&S English: 031-285-2888</strong></p></div>
+        <ul class="nav-links" id="navLinks">
+            <!--<li><a href="#home">Home</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#showcase">App</a></li>
+			<li><a href="#about">Method</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#stats">Why</a></li>
+            <li><a href="#cta">Contact</a></li> 
+			<li><strong>H&S English - Dongbaek</strong></li>
+			<li><strong>031-285-2888</strong></li> -->
+           
+        </ul>
+        
+    </div>
+</nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>H&S English</h1>
+                    <h3>14 years of successful English Students</h3>
+                    <p>From PHONICS to NAESHIN to SUNEUNG for ALL DONGBAEK, EOJEONG and YANGJI SCHOOLS</p>
+                    <!-- <a href="#features" class="button">Find out more</a>
+                    <a href="#contact" class="button button-secondary">Download now</a> -->
+                </div>
+                <div class="hero-graphic">
+                    <img src="handsgraphics1.webp" alt="H&S English">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="section-white">
+        <div class="container">
+            <div class="section-title">
+                <h2>English for <strong>EXAM SUCCESS</strong> and the <strong>REAL WORLD</strong></h2>
+               <!-- <p>No randomly scattered lessons, just tanglible results. While other apps overwhelm you with too many random lessons, <span class="sound">sound</span><span class="perfect">perfect</span> gives you exactly what you need: a clear 365-day path designed specifically for Korean and Japanese speakers. We follow research-proven language acquisition principles to guide your daily pronunciation progress incorporating fun challenges and detailed, instant feedback that keep you motivated through your entire journey.</p> -->
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <span class="feature-icon"><i data-lucide="book-open-text"></i></span>
+                    <h3>READING</h3>
+                    <p>Some words here some words here some words here some words here some words here.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon"><i data-lucide="notebook-pen"></i></span>
+                    <h3>WRITING</h3>
+                    <p>Some words here some words here some words here some words here some words here.
+					</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon"><i data-lucide="speech"></i></span>
+                    <h3>SPEAKING</h3>
+                    <p>Some words here some words here some words here some words here some words here.</p>
+                </div>
+				<div class="feature-card">
+                    <span class="feature-icon"><i data-lucide="ear"></i></span>
+                    <h3>LISTENING</h3>
+                    <p>Some words here some words here some words here some words here some words here.</p>
+                </div>
+				<div class="feature-card">
+                    <span class="feature-icon"><i data-lucide="case-sensitive"></i></span>
+                    <h3>PHONICS</h3>
+                    <p>Some words here some words here some words here some words here some words here.</p>
+                </div>
+				<div class="feature-card">
+                    <span class="feature-icon"><i data-lucide="trending-up"></i></span>
+                    <h3>EXAM PREP</h3>
+                    <p>Some words here some words here some words here some words here some words here.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- App Showcase Section 
+    <section id="showcase" class="section-light">
+        <div class="container">
+            <div class="section-title">
+                <h2>See <span class="sound">sound</span><span class="perfect">perfect</span> in Action</h2>
+                <p>Advanced feedback technology that shows you exactly how to improve your pronunciation.</p>
+            </div>
+            <div class="showcase-content">
+                  
+                <div class="app-preview">
+                    <div class="preview-placeholder">
+                        <p>📱 App Interface Preview</p>
+                        <p>Real-time pitch visualization, color-coded phoneme feedback, progress tracking</p>
+                    </div>
+                </div>
+                <div class="feedback-examples">
+                    <div class="feedback-placeholder">
+                        <p>📊 Advanced Feedback Examples</p>
+                        <p>Before/after comparisons, pronunciation scoring, interactive lessons</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+   
+
+    <!-- About Section -->
+    <section id="about" class="section-light">
+        <div class="container">
+            <div class="section-title">
+                <h2>Different to other Hagwons</h2>
+                <p>Some words here some words here some words here some words here some words here.</p>
+            </div>
+			<div class="hero-graphic">
+                    <img src="contact.webp" alt="H&S English">
+                </div>
+            <div style="max-width: 800px; margin: 0 auto; text-align: center; font-size: 1.1rem; line-height: 1.8; margin-bottom: 3rem;"> 
+                 <!-- <p>Some words here some words here some words here some words here some words here.Some words here some words here some words here some words here some words here.Some words here some words here some words here some words here some words here.Some words here some words here some words here some words here some words here.Some words here some words here some words here some words here some words here.</p> -->
+            </div>
+            
+            <!-- Curriculum Overview -->
+            <div class="section-title">
+                <h3>Our philosophy</h3>
+            </div>
+            <div class="curriculum-grid">
+                <div class="curriculum-card">
+                    <h4>Feature 1</h4>
+                    <div class="phase-title">Some words here some words here </div>
+                    <div class="focus-label">Focus:</div>
+                    <div class="focus-content">Some words here some words here some words here some words here some words here.</div>
+                </div>
+                <div class="curriculum-card">
+                    <h4>Feature 2</h4>
+                    <div class="phase-title">Some words here some words here </div>
+                    <div class="focus-label">Focus:</div>
+                    <div class="focus-content">Some words here some words here some words here some words here some words here.</div>
+                </div>
+                <div class="curriculum-card">
+                    <h4>Feature 3</h4>
+                    <div class="phase-title">Some words here some words here </div>
+                    <div class="focus-label">Focus:</div>
+                    <div class="focus-content">Some words here some words here some words here some words here some words here.</div>
+                </div>
+                <div class="curriculum-card">
+                    <h4>Feature 4</h4>
+                    <div class="phase-title">Some words here some words here </div>
+                    <div class="focus-label">Focus:</div>
+                    <div class="focus-content">Some words here some words here some words here some words here some words here. </div>
+                </div>
+            </div>
+        </div>
+    </section>
+	
+	 <!-- Pricing Section 
+    <section id="pricing" class="pricing-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Simple, Transparent Pricing</h2>
+                <p>Professional pronunciation training for <strong class="perfect">60% less cost</strong> than competitors. Start with a <strong class="perfect">7-day free trial</strong> and be reassured by the full <strong class="perfect">money-back guarantee</strong>.</p>
+            </div>
+            <div class="pricing-cards">
+                <div class="pricing-card">
+                    <div class="pricing-plan">Monthly</div>
+                    <div class="pricing-price">₩6,900</div>
+                    <div class="pricing-period">per month</div>
+                    <ul class="pricing-features">
+                        <li>7-day free trial</li>
+                        <li>Monthly unlocks</li>
+                        <li>Advanced feedback technology</li>
+                        <li>Progress tracking</li>
+                        <li>Cancel anytime</li>
+                    </ul>
+                </div>
+                <div class="pricing-card popular">
+                    <div class="pricing-plan">Annual</div>
+                    <div class="pricing-price">₩57,960</div>
+                    <div class="pricing-period">per year</div>
+                    <div class="pricing-savings">Save 30% (₩24,840)</div>
+                    <ul class="pricing-features">
+                        <li>7-day free trial</li>
+                        <li>Complete 365-day curriculum</li>
+                        <li>Advanced feedback technology</li>
+                        <li>Progress tracking</li>
+                        <li>Just ₩160 per day</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+   
+	 <!-- Stats Section -->
+    <section id="stats" class="section-white">
+        <div class="container">
+            <div class="section-title">
+                <h2>Numbers that speak volumes</h2>
+                <p>Some words here some words here some words here some words here some words here. Some words here some words here some words here some words here some words here.</p>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h1 style="font-size: 70px">94</h1>
+                    <p>Average Middle School Student Test Score</p>
+                </div>
+                <div class="stat-item">
+                    <h1 style="font-size: 70px">1.5</h1>
+                    <p>average high school student band</p>
+                </div>
+                <div class="stat-item">
+                    <h1 style="font-size: 70px">6</h1>
+                    <p>Max class size so each child gets proper attention</p>
+                </div>
+                <div class="stat-item">
+                    <h1 style="font-size: 70px">14</h1>
+                    <p>Fourteen years of successful English tuition in Dongbaek</p>
+                </div>
+            </div>
+		</div>
+	</section>		
+			
+			
+			<!-- Testimonials -->
+<section id="stats" class="section-light">
+        <div class="container">
+<div class="section-title" style="margin-top: 4rem; margin-bottom: 2rem;">
+    <h2>Happy Kids, Happy Parents</h2>
+    <p>Real feedback from H&S parents</p>
+</div>
+<div class="testimonials-grid">
+    <div class="testimonial-card">
+        <div class="testimonial-text">
+            some words here some words here
+        </div>
+        <div class="testimonial-author">
+            <div class="author-photo">
+			<img src="lim.jpg" alt="lim" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;"></div>
+            <div class="author-info">
+                <h4>Lim Ji-yoo</h4>
+                <p>Mom of 2nd grader</p>
+            </div>
+        </div>
+    </div>
+    <div class="testimonial-card">
+        <div class="testimonial-text">
+           some words here some words here
+        </div>
+        <div class="testimonial-author">
+            <div class="author-photo">
+          <img src="tanaka.jpg" alt="tanaka" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;"></div>
+            <div class="author-info">
+                <h4>Park Min-ho</h4>
+                <p>Dad, high schooler</p>
+            </div>
+        </div>
+    </div>
+    <div class="testimonial-card">
+        <div class="testimonial-text">
+            some words here some words here
+        </div>
+        <div class="testimonial-author">
+            <div class="author-photo">
+			<img src="lee.jpg" alt="lee" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;"></div>
+            <div class="author-info">
+                <h4>Lee So-young </h4>
+                <p>Mom, phonics learner</p>
+            </div>
+        </div>
+    </div>
+</div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="cta">
+        <div class="container">
+            <h2>Ready for your child to learn English properly? </h2>
+            <p>Call us to arrange a level test and consultation</p>
+            <h2>031 285 2888</h2>
+			<p>807 Gold Plaza A, Dongbaek, Yongin</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+           
+            <div class="footer-bottom">
+                <p>&copy; 2026 H&S English. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+ <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        // Close mobile menu when clicking on a link
+        navLinks.addEventListener('click', (e) => {
+            if (e.target.tagName === 'A') {
+                navLinks.classList.remove('active');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const navHeight = document.querySelector('nav').offsetHeight;
+                    const targetPosition = target.offsetTop - navHeight;
+
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+// Language dropdown functionality
+const languageDropdown = document.getElementById('languageDropdown');
+const languageToggle = document.getElementById('languageToggle');
+const languageOptions = document.querySelectorAll('.language-option');
+// Toggle dropdown
+languageToggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    languageDropdown.classList.toggle('active');
+});
+// Close dropdown when clicking outside
+document.addEventListener('click', () => {
+    languageDropdown.classList.remove('active');
+});
+
+// Handle language selection
+languageOptions.forEach(option => {
+    option.addEventListener('click', (e) => {
+        e.preventDefault();
+        
+        // Remove active class from all options
+        languageOptions.forEach(opt => opt.classList.remove('active'));
+        
+        // Add active class to selected option
+        option.classList.add('active');
+        
+        // Update button text
+        const lang = option.getAttribute('data-lang');
+        languageToggle.innerHTML = `${lang.toUpperCase()} ▼`;
+        
+        // Close dropdown
+        languageDropdown.classList.remove('active');
+        
+        // Redirect to the selected language page
+        window.location.href = option.getAttribute('href');
+    });
+});
+
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.backgroundColor = 'rgba(44, 44, 46, 0.95)';
+                nav.style.backdropFilter = 'blur(10px)';
+            } else {
+                nav.style.backgroundColor = 'var(--charcoal)';
+                nav.style.backdropFilter = 'none';
+            }
+        });
+    </script>
+
+   <script>
+  document.getElementById('contact-link').addEventListener('click', function() {
+    location.href = 'mailto:' + ['info','soundperfect.app'].join('@');
+  });
+</script>
+	
+	<script src="https://unpkg.com/lucide@latest"></script>
+	<script>
+  lucide.createIcons();
+</script>
+</body>
+</html>
