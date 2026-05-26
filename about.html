@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - SoundPerfect</title>
+	
+	<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+	<link rel="manifest" href="/site.webmanifest">
+	
+    <style>
+        /* === GLOBAL STYLES === */
+        :root {
+          --charcoal: #2C2C2E;
+          --royal-orange: #FF6B00;
+          --light-gray: #f4f4f4;
+          --white: #ffffff;
+          --font-main: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+          --shadow: 0 4px 20px rgba(0,0,0,0.1);
+          --transition: all 0.3s ease;
+        }
+
+        * {
+          box-sizing: border-box;
+        }
+
+        body {
+          margin: 0;
+          padding: 0;
+          font-family: var(--font-main);
+          background-color: var(--white);
+          color: var(--charcoal);
+          line-height: 1.6;
+        }
+
+        .container {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 2rem;
+        }
+
+        .container-narrow {
+          max-width: 800px;
+          margin: 0 auto;
+          padding: 0 2rem;
+        }
+		
+		.sound {
+            color: #5b5e63;
+        }
+		
+		.perfect {
+            color: var(--royal-orange);
+        }
+
+        /* === NAVIGATION === */
+        nav {
+          background-color: var(--charcoal);
+          padding: 1rem 0;
+          position: fixed;
+          width: 100%;
+          top: 0;
+          z-index: 1000;
+          box-shadow: var(--shadow);
+          transition: var(--transition);
+        }
+
+        nav .nav-container {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 2rem;
+        }
+
+        nav .logo {
+          display: flex;
+          align-items: center;
+        }
+
+        nav .logo-img {
+          height: 40px;
+          margin-right: 0.5rem;
+        }
+
+        nav .logo-text {
+          color: var(--white);
+          font-size: 1.5rem;
+          font-weight: bold;
+        }
+
+        .nav-links {
+          display: flex;
+          list-style: none;
+          margin: 0;
+          padding: 0;
+        }
+
+        .nav-links li {
+          margin-left: 2rem;
+        }
+
+        nav a {
+          color: var(--white);
+          text-decoration: none;
+          font-weight: 500;
+          transition: var(--transition);
+        }
+
+        nav a:hover {
+          color: var(--royal-orange);
+        }
+
+        /* Mobile Menu */
+        .menu-toggle {
+          display: none;
+          background: none;
+          border: none;
+          color: var(--white);
+          font-size: 1.5rem;
+          cursor: pointer;
+        }
+
+        /* === PAGE HEADER === */
+        .page-header {
+          background: linear-gradient(135deg, var(--charcoal), #1a1a1c);
+          color: var(--white);
+          padding: 8rem 0 4rem;
+          text-align: center;
+          margin-top: 70px;
+        }
+
+        .page-header h1 {
+          font-size: clamp(2rem, 4vw, 3rem);
+          margin-bottom: 1rem;
+          font-weight: 300;
+          letter-spacing: -1px;
+        }
+
+        .page-header p {
+          font-size: 1.2rem;
+          opacity: 0.9;
+          max-width: 600px;
+          margin: 0 auto;
+        }
+
+        .breadcrumb {
+          margin-top: 2rem;
+          opacity: 0.7;
+        }
+
+        .breadcrumb a {
+          color: var(--white);
+          text-decoration: none;
+          transition: var(--transition);
+        }
+
+        .breadcrumb a:hover {
+          color: var(--royal-orange);
+        }
+
+        .breadcrumb span {
+          margin: 0 0.5rem;
+        }
+
+        /* === MAIN CONTENT === */
+        .main-content {
+          padding: 5rem 0;
+        }
+
+        .content-section {
+          margin-bottom: 4rem;
+        }
+
+        .content-section h2 {
+          font-size: 2rem;
+          margin-bottom: 1.5rem;
+          color: var(--charcoal);
+          font-weight: 300;
+        }
+
+        .content-section h3 {
+          font-size: 1.5rem;
+          margin-bottom: 1rem;
+          color: var(--royal-orange);
+          font-weight: 500;
+        }
+
+        .content-section p {
+          font-size: 1.1rem;
+          margin-bottom: 1.5rem;
+          color: #555;
+        }
+
+        .content-section ul {
+          margin-bottom: 2rem;
+        }
+
+        .content-section li {
+          margin-bottom: 0.5rem;
+          color: #555;
+        }
+
+        /* === BUTTON STYLES === */
+        .button {
+          background-color: var(--royal-orange);
+          color: var(--white);
+          padding: 1rem 2rem;
+          border: none;
+          border-radius: 50px;
+          font-size: 1rem;
+          font-weight: 600;
+          cursor: pointer;
+          text-decoration: none;
+          display: inline-block;
+          transition: var(--transition);
+          box-shadow: var(--shadow);
+        }
+
+        .button:hover {
+          background-color: #e55f00;
+          transform: translateY(-2px);
+          box-shadow: 0 6px 25px rgba(255,107,0,0.3);
+        }
+
+        .button-secondary {
+          background-color: transparent;
+          border: 2px solid var(--royal-orange);
+          color: var(--royal-orange);
+        }
+
+        .button-secondary:hover {
+          background-color: var(--royal-orange);
+          color: var(--white);
+        }
+
+        /* === CARD STYLES === */
+        .card {
+          background: var(--white);
+          padding: 2rem;
+          border-radius: 12px;
+          box-shadow: var(--shadow);
+          margin-bottom: 2rem;
+          transition: var(--transition);
+        }
+
+        .card:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+
+        .card h3 {
+          margin-top: 0;
+          color: var(--charcoal);
+        }
+
+        /* === GRID LAYOUTS === */
+        .grid-2 {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+          gap: 2rem;
+        }
+
+        .grid-3 {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          gap: 2rem;
+        }
+
+        /* === FORM STYLES === */
+        .form-group {
+          margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+          display: block;
+          margin-bottom: 0.5rem;
+          font-weight: 600;
+          color: var(--charcoal);
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+          width: 100%;
+          padding: 1rem;
+          border: 2px solid #ddd;
+          border-radius: 8px;
+          font-size: 1rem;
+          transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+          outline: none;
+          border-color: var(--royal-orange);
+          box-shadow: 0 0 0 3px rgba(255,107,0,0.1);
+        }
+
+        .form-group textarea {
+          min-height: 120px;
+          resize: vertical;
+        }
+
+        /* === ALERT STYLES === */
+        .alert {
+          padding: 1rem 1.5rem;
+          border-radius: 8px;
+          margin-bottom: 2rem;
+        }
+
+		.alert-info {
+          background-color: #ffddc4;
+          border: 1px solid #FF6B00;
+          color: #2C2C2E;
+        }
+
+        .alert-success {
+          background-color: #e8f5e8;
+          border: 1px solid #b3d9b3;
+          color: #2d5d2d;
+        }
+
+        .alert-warning {
+          background-color: #fff3cd;
+          border: 1px solid #ffeaa7;
+          color: #856404;
+        }
+
+        /* === TABLE STYLES === */
+        .table-container {
+          overflow-x: auto;
+          margin: 2rem 0;
+        }
+
+        table {
+          width: 100%;
+          border-collapse: collapse;
+          background: var(--white);
+          border-radius: 8px;
+          overflow: hidden;
+          box-shadow: var(--shadow);
+        }
+
+        th, td {
+          padding: 1rem;
+          text-align: left;
+          border-bottom: 1px solid #eee;
+        }
+
+        th {
+          background-color: var(--light-gray);
+          font-weight: 600;
+          color: var(--charcoal);
+        }
+
+        tr:hover {
+          background-color: #f9f9f9;
+        }
+
+        /* === FOOTER === */
+        footer {
+          background-color: var(--charcoal);
+          color: var(--white);
+          text-align: center;
+          padding: 3rem 0 2rem;
+          margin-top: 5rem;
+        }
+
+        .footer-content {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+          gap: 2rem;
+          margin-bottom: 2rem;
+          text-align: left;
+        }
+
+        .footer-section h4 {
+          color: var(--royal-orange);
+          margin-bottom: 1rem;
+        }
+
+        .footer-section a {
+          color: #ccc;
+          text-decoration: none;
+          display: block;
+          margin-bottom: 0.5rem;
+          transition: var(--transition);
+        }
+
+        .footer-section a:hover {
+          color: var(--royal-orange);
+        }
+
+        .footer-bottom {
+          border-top: 1px solid #444;
+          padding-top: 2rem;
+          text-align: center;
+          color: #999;
+        }
+
+        /* === MOBILE STYLES === */
+        @media (max-width: 768px) {
+          .nav-links {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: var(--charcoal);
+            flex-direction: column;
+            box-shadow: var(--shadow);
+          }
+
+          .nav-links.active {
+            display: flex;
+          }
+
+          .nav-links li {
+            margin: 0;
+            border-bottom: 1px solid #444;
+          }
+
+          .nav-links a {
+            display: block;
+            padding: 1rem 2rem;
+          }
+
+          .menu-toggle {
+            display: block;
+          }
+
+          .container {
+            padding: 0 1rem;
+          }
+
+          .container-narrow {
+            padding: 0 1rem;
+          }
+
+          nav .nav-container {
+            padding: 0 1rem;
+          }
+
+          .page-header {
+            padding: 6rem 0 3rem;
+          }
+
+          .main-content {
+            padding: 3rem 0;
+          }
+
+          .grid-2 {
+            grid-template-columns: 1fr;
+          }
+
+          .grid-3 {
+            grid-template-columns: 1fr;
+          }
+
+          .footer-content {
+            grid-template-columns: 1fr;
+            text-align: center;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .grid-2 {
+            grid-template-columns: 1fr;
+          }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+				<a href="index.html">
+					<img src="SPlogo1024transsm.webp" alt="SoundPerfect" class="logo-img">
+				</a>
+			</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <!-- <li><a href="features.html">Features</a></li>
+                <li><a href="app.html">App</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="about.html">Method</a></li> -->
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="menu-toggle" id="menuToggle">☰</button>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>About Us</h1>
+            <p>Over 30 year's experience of serving the English-as-a-Second-Language market.</p>
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span>/</span>
+                <span>About</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container-narrow">
+            <!-- REPLACE THIS SECTION WITH YOUR PAGE CONTENT -->
+            <div class="content-section">
+                <p>With master's degrees ranging from Linguistics to Phonetics to English Language and Literature, we've a robust team of educational experts. Our founders are qualified teachers ensuring pedagogical robustness, and ex-stockbrokers looking after the business side of things. We've a lean and innovative tech department with a whole bunch of app developments already in the bag, and we think we've ticked all the boxes to provide you with the very best research-based language education apps.</p>
+            </div>  
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <a href="#" id="contact-link">Email Us</a>
+                    <p>807 Gold Plaza A<br>Dongbaek, Gyeonnggi-do</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <a href="legal.html">Terms, Privacy, Cookies</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <a href="faq.html">FAQ</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <a href="about.html">About Us</a>
+                    <a href="careers.html">Careers</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 SoundPerfect. All rights reserved. Crafted with passion for perfect pronunciation.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        navLinks.addEventListener('click', (e) => {
+            if (e.target.tagName === 'A') {
+                navLinks.classList.remove('active');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const navHeight = document.querySelector('nav').offsetHeight;
+                    const targetPosition = target.offsetTop - navHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.backgroundColor = 'rgba(44, 44, 46, 0.95)';
+                nav.style.backdropFilter = 'blur(10px)';
+            } else {
+                nav.style.backgroundColor = 'var(--charcoal)';
+                nav.style.backdropFilter = 'none';
+            }
+        });
+    </script>
+	
+	<script>
+  document.getElementById('contact-link').addEventListener('click', function() {
+    location.href = 'mailto:' + ['info','soundperfect.app'].join('@');
+  });
+</script>
+	
+	<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+	<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

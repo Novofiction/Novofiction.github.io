@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speak-E: English pronunciation</title>
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    
+    <style>
+        /* === GLOBAL STYLES === */
+        :root {
+          --charcoal: #2C2C2E;
+          --royal-orange: #fd832c;
+          --korean-blue: #0047A0;
+          --korean-red: #CD2E3A;
+          --light-gray: #f4f4f4;
+		  --dark-gray: #666666;
+          --white: #ffffff;
+		  --blue: #704ffe;
+          --font-main: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+          --shadow: 0 4px 20px rgba(0,0,0,0.1);
+          --transition: all 0.3s ease;
+        }
+
+        * {
+          box-sizing: border-box;
+        }
+
+        body {
+          margin: 0;
+          padding: 0;
+          font-family: var(--font-main);
+          background-color: var(--white);
+          color: var(--charcoal);
+          line-height: 1.6;
+        }
+
+        .container {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 2rem;
+        }
+        
+        .sound {
+            color: #5b5e63;
+        }
+        
+        .perfect {
+            color: var(--royal-orange);
+        }
+		
+		.feature-icon {
+  width: 48px;
+  height: 48px;
+  stroke-width: 1;
+  color: var(--royal-orange);
+  margin-bottom: 0.5rem;
+}
+
+        /* === NAVIGATION === */
+        nav {
+          background-color: var(--charcoal);
+          padding: 1rem 0;
+          position: fixed;
+          width: 100%;
+          top: 0;
+          z-index: 1000;
+          box-shadow: var(--shadow);
+        }
+
+        nav .nav-container {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 2rem;
+        }
+
+        nav .logo {
+          display: flex;
+          align-items: center;
+          text-decoration: none;
+        }
+
+        nav .logo-img {
+          height: 40px;
+          margin-right: 0.5rem;
+        }
+
+        nav .logo-text {
+          color: var(--white);
+          font-size: 1.5rem;
+          font-weight: bold;
+        }
+
+        .nav-links {
+          display: flex;
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          align-items: center;
+        }
+
+        .nav-links li {
+          margin-left: 2rem;
+        }
+
+        nav a {
+          color: var(--white);
+          text-decoration: none;
+          font-weight: 500;
+          transition: var(--transition);
+        }
+
+        nav a:hover {
+          color: var(--royal-orange);
+        }
+
+        /* === HERO SECTION === */
+        .hero {
+          min-height: 20vh;
+		  background: linear-gradient(135deg, var(--white), var(--light-gray));
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          color: var(--charcoal);
+          padding-top: 80px;
+        }
+
+        .hero-content {
+          max-width: 900px;
+          padding: 2rem;
+        }
+
+        .app-icon-large {
+          width: 120px;
+          height: 120px;
+          margin: 0 auto 1rem;
+          border-radius: 25px;
+          box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+        }
+
+        .hero h1 {
+          font-size: clamp(2.5rem, 5vw, 4rem);
+          margin-bottom: 0.75rem;
+          font-weight: 300;
+          letter-spacing: -1px;
+        }
+
+        .hero .tagline {
+          font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+          margin-bottom: 0.75rem;
+          font-weight: 500;
+        }
+
+        .hero p {
+          font-size: clamp(1.1rem, 2vw, 1.3rem);
+          margin-bottom: 1.5rem;
+          opacity: 0.95;
+          max-width: 700px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        /* === DOWNLOAD BUTTONS === */
+        .download-buttons {
+          display: flex;
+          gap: 1rem;
+          justify-content: center;
+          align-items: center;
+          flex-wrap: wrap;
+          margin-top: 2rem;
+        }
+
+        .download-btn img {
+          height: 60px;
+          transition: var(--transition);
+        }
+
+        .download-btn img:hover {
+          transform: scale(1.05);
+        }
+
+        /* === BUTTON STYLES === */
+        .button {
+          background-color: var(--royal-orange);
+          color: var(--white);
+          padding: 1rem 2rem;
+          border: none;
+          border-radius: 50px;
+          font-size: 1rem;
+          font-weight: 600;
+          cursor: pointer;
+          text-decoration: none;
+          display: inline-block;
+          transition: var(--transition);
+          box-shadow: var(--shadow);
+        }
+
+        .button:hover {
+          background-color: #e55f00;
+          transform: translateY(-2px);
+          box-shadow: 0 6px 25px rgba(255,107,0,0.3);
+        }
+
+        /* === SECTION STYLES === */
+        section {
+          padding: 2rem 0;
+        }
+
+        .section-white {
+          background-color: var(--white);
+        }
+
+        .section-light {
+          background-color: var(--light-gray);
+        }
+
+        .section-title {
+          text-align: center;
+          margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+          font-size: clamp(2rem, 4vw, 3rem);
+          margin-bottom: 1rem;
+          font-weight: 300;
+          color: var(--charcoal);
+        }
+
+        .section-title p {
+          font-size: 1.2rem;
+          color: #666;
+          max-width: 700px;
+          margin: 0 auto;
+        }
+
+        /* === FEATURES GRID === */
+        .features-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+          gap: 2.5rem;
+          margin-top: 1rem;
+        }
+
+        .feature-item {
+          background: var(--white);
+          padding: 1rem;
+          border-radius: 15px;
+          box-shadow: var(--shadow);
+          transition: var(--transition);
+          text-align: center;
+        }
+
+        .feature-item:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+
+        .feature-icon {
+          font-size: 5rem;
+          margin-bottom: 1rem;
+          display: block;
+        }
+
+        .feature-item h3 {
+          font-size: 1.5rem;
+          margin-bottom: 1rem;
+          color: var(--charcoal);
+        }
+
+        .feature-item p {
+          color: #666;
+          line-height: 1.8;
+        }
+
+        /* === HOW IT WORKS === */
+        .steps-container {
+          max-width: 900px;
+          margin: 0 auto;
+        }
+
+        .step {
+          display: flex;
+          align-items: center;
+          gap: 2rem;
+          margin-bottom: 3rem;
+          padding: 2rem;
+          background: var(--white);
+          border-radius: 15px;
+          box-shadow: var(--shadow);
+        }
+
+        .step:nth-child(even) {
+          flex-direction: row-reverse;
+        }
+
+        .step-number {
+          font-size: 4rem;
+          font-weight: bold;
+          color: var(--royal-orange);
+          min-width: 100px;
+          text-align: center;
+        }
+
+        .step-content h3 {
+          font-size: 1.8rem;
+          margin-bottom: 0.5rem;
+          color: var(--charcoal);
+        }
+
+        .step-content p {
+          color: #666;
+          font-size: 1.1rem;
+        }
+
+      
+       /* === SCREENSHOTS GRID === */
+.screenshots-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.screenshot img {
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .screenshots-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .screenshots-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* === STATS SECTION === */
+        .stats-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+          gap: 2rem;
+          text-align: center;
+        }
+
+        .stat-item h3 {
+          font-size: 1.5rem;
+          color: var(--royal-orange);
+          margin-bottom: 0.5rem;
+          font-weight: 700;
+        }
+
+        .stat-item p {
+          font-size: 1rem;
+          color: #666;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+        }
+		
+		/* === TESTIMONIALS === */
+        .testimonials-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          gap: 2rem;
+          margin-top: 4rem;
+        }
+
+        .testimonial-card {
+          background: var(--white);
+          padding: 2rem;
+          border-radius: 12px;
+          box-shadow: var(--shadow);
+          text-align: center;
+          transition: var(--transition);
+          position: relative;
+        }
+
+        .testimonial-card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+
+        .testimonial-card::before {
+          content: '"';
+          position: absolute;
+          top: -10px;
+          left: 20px;
+          font-size: 4rem;
+          color: var(--royal-orange);
+          font-family: serif;
+          line-height: 1;
+        }
+
+        .testimonial-text {
+          font-size: 1.1rem;
+          line-height: 1.6;
+          color: var(--charcoal);
+          margin-bottom: 1.5rem;
+          font-style: italic;
+        }
+
+        .testimonial-author {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 1rem;
+        }
+
+        .author-photo {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          background: linear-gradient(135deg, var(--royal-orange), #ff8533);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: white;
+          font-weight: bold;
+          font-size: 1.2rem;
+        }
+
+        .author-info h4 {
+          margin: 0;
+          color: var(--charcoal);
+          font-size: 1rem;
+          font-weight: 600;
+        }
+
+        .author-info p {
+          margin: 0;
+          color: #666;
+          font-size: 0.9rem;
+        }
+        
+
+        /* === CTA SECTION === */
+        .cta-section {
+          background: linear-gradient(135deg, var(--white), var(--light-gray));
+          color: var(--charcoal);
+          text-align: center;
+          padding: 5rem 2rem;
+        }
+
+        .cta-section h2 {
+          font-size: clamp(2rem, 4vw, 3rem);
+          margin-bottom: 1.5rem;
+          font-weight: 300;
+        }
+
+        .cta-section p {
+          font-size: 1.2rem;
+          margin-bottom: 2rem;
+          opacity: 0.95;
+        }
+
+        /* === FOOTER === */
+        footer {
+          background-color: var(--charcoal);
+          color: var(--white);
+          padding: 3rem 0 1.5rem;
+        }
+
+        .footer-content {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+          gap: 2rem;
+          margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+          margin-bottom: 1rem;
+          color: var(--royal-orange);
+        }
+
+        .footer-section a {
+          display: block;
+          color: var(--white);
+          text-decoration: none;
+          margin-bottom: 0.5rem;
+          transition: var(--transition);
+        }
+
+        .footer-section a:hover {
+          color: var(--royal-orange);
+        }
+
+        .footer-bottom {
+          text-align: center;
+          padding-top: 2rem;
+          border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* === RESPONSIVE === */
+        @media (max-width: 768px) {
+          .step {
+            flex-direction: column !important;
+            text-align: center;
+          }
+
+          .step-number {
+            font-size: 3rem;
+          }
+
+          nav .nav-links {
+            display: none;
+          }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+        <div class="logo">
+            <a href="index.html">
+                <img src="SPlogo1024transsm.webp" alt="SoundPerfect" class="logo-img">
+            </a>
+        </div>
+            <ul class="nav-links">
+                <li><a href="#screenshots">Screenshots</a></li>
+				<li><a href="#features">Features</a></li>
+                <li><a href="#download">Download</a></li>
+                <li><a href="index.html">← All Apps</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <img src="icons5.png" alt="Speak-E Icon" class="app-icon-large">
+            <h1>Speak-E: English Pronunciation</h1>
+            <p class="tagline">Detailed Speech Analysis for Clear and Confident English Pronunciation</p>
+            <p>Personalized AI feedback on your English pronunciation with comprehensive analysis. Start for FREE today</p>
+            
+            <div class="download-buttons">
+                <a href="#" class="download-btn">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play">
+                </a>
+                <a href="#" class="download-btn">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="Download on the App Store">
+                </a>
+            </div>
+        </div>
+    </section>
+	
+	    <!-- Screenshots Section -->
+    <section id="screenshots" class="section-white">
+        <div class="container">
+            <div class="section-title">
+                <h2>Instant speech analysis</h2>
+                <p>The speech engine has been trained on thousands of hours of native speaker audio. Get accurate per word & per phoneme feedback, fluency, rhythm etc.</p>
+           </div>
+            
+            <div class="screenshots-grid">
+                <div class="screenshot">
+                    <img src="sp1.webp" alt="soundperfect Main Screen">
+                </div>
+                <div class="screenshot">
+                    <img src="sp2.webp" alt="soundperfect Practice Screen">
+                </div>
+                <div class="screenshot">
+                    <img src="sp3.webp" alt="soundperfect Pronunciation Feedback">
+                </div>
+                <div class="screenshot">
+                    <img src="sp4.webp" alt="soundperfect Progress Tracking">
+                </div>
+				<div class="screenshot">
+                    <img src="sp5.webp" alt="soundperfect phoneme guide">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="section-light">
+        <div class="container">
+            <div class="section-title">
+                <h2>Powerful Features for Clear and Confident English Pronunciation</h2>
+                <p>Everything you need to improve your English pronunciation, powered by advanced AI speech analysis</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-item">
+                    <span class="feature-icon"><i data-lucide="audio-lines"></i></span>
+                    <h4>Native Recordings</h4>
+                    <p>Every sentence and sound features authentic English language recordings. Learn the natural rhythm and intonation of real English speech.</p>
+                </div>
+                
+                <div class="feature-item">
+                    <span class="feature-icon"><i data-lucide="brain"></i></span>
+                    <h4>Advanced AI Analysis</h4>
+                    <p>An advanced AI engine, trained on thousands of hours of native English speech, provides instant, detailed feedback on your pronunciation.</p>
+                </div>
+                
+                <div class="feature-item">
+                    <span class="feature-icon"><i data-lucide="target"></i></span>
+                    <h4>Per-phoneme Feedback</h4>
+                    <p>Get precise feedback on every English sound. Identify exactly which phonemes need improvement.</p>
+                </div>
+                
+                
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section 
+    <section id="how-it-works" class="section-white">
+        <div class="container">
+            <div class="section-title">
+                <h2>How K-Speak Works</h2>
+                <p>Simple, effective, and fun - master Korean pronunciation in just minutes a day</p>
+            </div>
+            
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Listen to Native Speakers</h3>
+                        <p>Each lesson begins with a native Korean speaker demonstrating the correct pronunciation. Listen carefully to the sounds, rhythm, and intonation.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Record Your Voice</h3>
+                        <p>Repeat the Korean sentence or sound and record yourself. Don't worry about making mistakes - that's how you learn!</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Get Instant AI Feedback</h3>
+                        <p>Our advanced AI analyzes your pronunciation instantly, giving you detailed feedback on phonemes, fluency, rhythm, stress, and pause duration.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Practice & Improve</h3>
+                        <p>Use the feedback to refine your pronunciation. Compare your recording with the native speaker and practice until you sound natural.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+
+
+    
+	
+	 <!-- Stats Section -->
+    <section id="stats" class="section-light">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Speak-E?</h2>
+                <p>Advanced technology and research-based approach that delivers real results. <strong>Over 92%</strong> of Korean and Japanese users feel more confident in pronouncing English after using Speak-E</p>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>Advanced Feedback</h3>
+                    <p>Phonemes, fluency, missed sounds, intonation analysis etc.</p>
+                </div>
+                <div class="stat-item">
+                    <h3>Structured Tasks </h3>
+                    <p>Follows research-based speech progression process</p>
+                </div>
+                <div class="stat-item">
+                    <h3>Unlimited Attempts</h3>
+                    <p>Try each task as many or few times as required. Credits never expire.</p>
+                </div>
+                <div class="stat-item">
+                    <h3>Time Saving</h3>
+                    <p>Just 15 minutes per day</p>
+                </div>
+            </div>
+			<!-- Testimonials -->
+<div class="section-title" style="margin-top: 4rem; margin-bottom: 2rem;">
+    <h2>What Our Users Say</h2>
+    <p>Real feedback from Korean and Japanese learners transforming their English pronunciation</p>
+</div>
+<div class="testimonials-grid">
+    <div class="testimonial-card">
+        <div class="testimonial-text">
+            No more guessing if I'm pronouncing words correctly or getting stress right - I see exactly what needs adjustment
+        </div>
+        <div class="testimonial-author">
+            <div class="author-photo">
+			<img src="lim.jpg" alt="lim" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;"></div>
+            <div class="author-info">
+                <h4>Ji-yoo Lim</h4>
+                <p>Software Engineer, Ansan</p>
+            </div>
+        </div>
+    </div>
+    <div class="testimonial-card">
+        <div class="testimonial-text">
+            In just a few months I am already more confident in meetings, presentations, and daily conversations
+        </div>
+        <div class="testimonial-author">
+            <div class="author-photo">
+          <img src="tanaka.jpg" alt="tanaka" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;"></div>
+            <div class="author-info">
+                <h4>Yuki Tanaka</h4>
+                <p>Marketing Manager, Fukuoka</p>
+            </div>
+        </div>
+    </div>
+    <div class="testimonial-card">
+        <div class="testimonial-text">
+            Finally, an app that knows why I struggled with things like 'rice' and 'lice', and helped me sort it out!
+        </div>
+        <div class="testimonial-author">
+            <div class="author-photo">
+			<img src="lee.jpg" alt="lee" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;"></div>
+            <div class="author-info">
+                <h4>So-young Lee</h4>
+                <p>Graduate Student, Incheon</p>
+            </div>
+        </div>
+    </div>
+</div>
+        </div>
+    </section>
+	
+	<!-- Who It's For Section -->
+    <section class="section-light">
+        <div class="container">
+            <div class="section-title">
+                <h2>Who will benefit?</h2>
+                <p>Perfect for any English learner who wants to sound more natural and confident</p>
+            </div>
+            
+            <div class="features-grid">
+                
+				<div class="feature-item">
+                    <span class="feature-icon"><i data-lucide="globe"></i></span>
+                    <h4>Global outlookers</h4>
+                    <p>Speak English like your favorite stars and master useful everyday phrases.</p>
+                </div>
+				
+				<div class="feature-item">
+                    <span class="feature-icon"><i data-lucide="graduation-cap"></i></span>
+                    <h4>Language Students</h4>
+                    <p>Complement your English classes with targeted pronunciation practice and instant feedback.</p>
+                </div>
+           
+                <div class="feature-item">
+                    <span class="feature-icon"><i data-lucide="plane"></i></span>
+                    <h4>Travelers</h4>
+                    <p>Prepare for your trip by mastering essential sounds, words, fluency and rhythm.</p>
+                </div> 
+				
+				<div class="feature-item">
+                    <span class="feature-icon"><i data-lucide="briefcase-business"></i></span>
+                    <h4>Business Professionals</h4>
+                    <p>Improve your English pronunciation for work meetings, presentations, and client communications.</p>
+                </div>
+                
+                <div class="feature-item">
+                    <span class="feature-icon"><i data-lucide="book-check"></i></span>
+                    <h4>Test Takers</h4>
+                    <p>Prepare for English language speaking exams with comprehensive pronunciation training.</p>
+                </div>
+                
+                <div class="feature-item">
+                    <span class="feature-icon"><i data-lucide="badge-alert"></i></span>
+                    <h4>Strugglers</h4>
+                    <p>For some language backgrounds, English is difficult to speak. Level-up your pronunciation easily.</p>
+                </div>
+				
+				
+				
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section 
+    <section class="section-white">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Learners Are Saying</h2>
+                <p>Join thousands of English learners improving their pronunciation with soundperfect</p>
+            </div>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial">
+                    <p class="testimonial-text">"K-Speak helped me finally nail the difference between ㄱ and ㅋ. The instant feedback is incredibly helpful and keeps me motivated!"</p>
+                    <p class="testimonial-author">Sarah M.</p>
+                    <p class="testimonial-role">Korean Language Student</p>
+                </div>
+                
+                <div class="testimonial">
+                    <p class="testimonial-text">"As a K-pop fan, I always wanted to pronounce Korean lyrics correctly. K-Speak made it so easy and fun to practice!"</p>
+                    <p class="testimonial-author">James K.</p>
+                    <p class="testimonial-role">K-Pop Enthusiast</p>
+                </div>
+                
+                <div class="testimonial">
+                    <p class="testimonial-text">"The native speaker recordings are pure gold. Being able to compare my voice directly with theirs has improved my accent dramatically."</p>
+                    <p class="testimonial-author">Maria L.</p>
+                    <p class="testimonial-role">Business Professional</p>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- CTA Section -->
+    <section id="download" class="cta-section">
+        <div class="container">
+            <h2>Ready to Speak English Clearly and Confidently?</h2>
+            <p>Start for <span class="perfect"><strong>FREE</strong></span> today and begin your journey to clear and confident English pronunciation</p>
+            
+            <div class="download-buttons">
+                <a href="#" class="download-btn">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play">
+                </a>
+                <a href="#" class="download-btn">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="Download on the App Store">
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <a href="#" id="contact-link">Email Us</a>
+                    <p>807 Gold Plaza A<br>Dongbaek, Gyeonggi-do</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <a href="legal.html">Terms, Privacy, Cookies</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <a href="faq.html">FAQ</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <a href="about.html">About Us</a>
+                    <a href="careers.html">Careers</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 <span class="sound">sound</span><span class="perfect">perfect</span>. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const navHeight = document.querySelector('nav').offsetHeight;
+                    const targetPosition = target.offsetTop - navHeight;
+
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Contact email obfuscation
+        document.getElementById('contact-link').addEventListener('click', function() {
+            location.href = 'mailto:' + ['info','soundperfect.app'].join('@');
+        });
+    </script>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+<script>
+  lucide.createIcons();
+</script>
+</body>
+</html>

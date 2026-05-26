@@ -1,0 +1,106 @@
+
+/* === GLOBAL STYLES === */
+:root {
+  --charcoal: #2C2C2E;
+  --royal-orange: #FF6B00;
+  --light-gray: #f4f4f4;
+  --white: #ffffff;
+  --font-main: Verdana, Geneva, sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-main);
+  background-color: var(--white);
+  color: var(--charcoal);
+  line-height: 1.6;
+}
+
+/* === NAVIGATION === */
+nav {
+  background-color: var(--charcoal);
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+nav .logo {
+  display: flex;
+  align-items: center;
+}
+
+nav .logo img {
+  height: 40px;
+  margin-right: 0.5rem;
+}
+
+nav a {
+  color: var(--white);
+  text-decoration: none;
+  margin-left: 1.5rem;
+  font-weight: bold;
+}
+
+nav a:hover {
+  color: var(--royal-orange);
+}
+
+/* === SECTION STYLES === */
+section {
+  padding: 4rem 2rem;
+}
+
+.section-white {
+  background-color: var(--white);
+}
+
+.section-light {
+  background-color: var(--light-gray);
+}
+
+/* === HEADER STYLES === */
+header {
+  text-align: center;
+  padding: 6rem 2rem;
+  background-color: var(--white);
+}
+
+header h1 {
+  font-size: 2.5rem;
+  color: var(--charcoal);
+  margin-bottom: 1rem;
+}
+
+header p {
+  font-size: 1.125rem;
+  color: var(--charcoal);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* === BUTTON STYLES === */
+.button {
+  background-color: var(--royal-orange);
+  color: var(--white);
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.button:hover {
+  background-color: #e55f00;
+}
+
+/* === FOOTER === */
+footer {
+  background-color: var(--charcoal);
+  color: var(--white);
+  text-align: center;
+  padding: 2rem;
+  font-size: 0.9rem;
+}

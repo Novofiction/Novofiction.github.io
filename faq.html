@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - SoundPerfect</title>
+	
+	<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+	<link rel="manifest" href="/site.webmanifest">
+	
+    <style>
+        /* === GLOBAL STYLES === */
+        :root {
+          --charcoal: #2C2C2E;
+          --royal-orange: #FF6B00;
+          --light-gray: #f4f4f4;
+          --white: #ffffff;
+          --font-main: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+          --shadow: 0 4px 20px rgba(0,0,0,0.1);
+          --transition: all 0.3s ease;
+        }
+
+        * {
+          box-sizing: border-box;
+        }
+
+        body {
+          margin: 0;
+          padding: 0;
+          font-family: var(--font-main);
+          background-color: var(--white);
+          color: var(--charcoal);
+          line-height: 1.6;
+        }
+
+        .container {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 2rem;
+        }
+
+        .container-narrow {
+          max-width: 800px;
+          margin: 0 auto;
+          padding: 0 2rem;
+        }
+		
+		.sound {
+            color: #5b5e63;
+        }
+		
+		.perfect {
+            color: var(--royal-orange);
+        }
+
+        /* === NAVIGATION === */
+        nav {
+          background-color: var(--charcoal);
+          padding: 1rem 0;
+          position: fixed;
+          width: 100%;
+          top: 0;
+          z-index: 1000;
+          box-shadow: var(--shadow);
+          transition: var(--transition);
+        }
+
+        nav .nav-container {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 2rem;
+        }
+
+        nav .logo {
+          display: flex;
+          align-items: center;
+        }
+
+        nav .logo-img {
+          height: 40px;
+          margin-right: 0.5rem;
+        }
+
+        nav .logo-text {
+          color: var(--white);
+          font-size: 1.5rem;
+          font-weight: bold;
+        }
+
+        .nav-links {
+          display: flex;
+          list-style: none;
+          margin: 0;
+          padding: 0;
+        }
+
+        .nav-links li {
+          margin-left: 2rem;
+        }
+
+        nav a {
+          color: var(--white);
+          text-decoration: none;
+          font-weight: 500;
+          transition: var(--transition);
+        }
+
+        nav a:hover {
+          color: var(--royal-orange);
+        }
+
+        /* Mobile Menu */
+        .menu-toggle {
+          display: none;
+          background: none;
+          border: none;
+          color: var(--white);
+          font-size: 1.5rem;
+          cursor: pointer;
+        }
+
+        /* === PAGE HEADER === */
+        .page-header {
+          background: linear-gradient(135deg, var(--charcoal), #1a1a1c);
+          color: var(--white);
+          padding: 8rem 0 4rem;
+          text-align: center;
+          margin-top: 70px;
+        }
+
+        .page-header h1 {
+          font-size: clamp(2rem, 4vw, 3rem);
+          margin-bottom: 1rem;
+          font-weight: 300;
+          letter-spacing: -1px;
+        }
+
+        .page-header p {
+          font-size: 1.2rem;
+          opacity: 0.9;
+          max-width: 600px;
+          margin: 0 auto;
+        }
+
+        .breadcrumb {
+          margin-top: 2rem;
+          opacity: 0.7;
+        }
+
+        .breadcrumb a {
+          color: var(--white);
+          text-decoration: none;
+          transition: var(--transition);
+        }
+
+        .breadcrumb a:hover {
+          color: var(--royal-orange);
+        }
+
+        .breadcrumb span {
+          margin: 0 0.5rem;
+        }
+
+        /* === MAIN CONTENT === */
+        .main-content {
+          padding: 5rem 0;
+        }
+
+        .content-section {
+          margin-bottom: 4rem;
+        }
+
+        .content-section h2 {
+          font-size: 2rem;
+          margin-bottom: 1.5rem;
+          color: var(--charcoal);
+          font-weight: 300;
+        }
+
+        .content-section h3 {
+          font-size: 1.5rem;
+          margin-bottom: 1rem;
+          color: var(--royal-orange);
+          font-weight: 500;
+        }
+
+        .content-section p {
+          font-size: 1.1rem;
+          margin-bottom: 1.5rem;
+          color: #555;
+        }
+
+        .content-section ul {
+          margin-bottom: 2rem;
+        }
+
+        .content-section li {
+          margin-bottom: 0.5rem;
+          color: #555;
+        }
+		
+		/* === FAQ STYLES === */
+        .faq-section {
+          padding: 4rem 0;
+        }
+
+        .faq-category {
+          margin-bottom: 3rem;
+        }
+
+        .faq-category h2 {
+          color: var(--royal-orange);
+          font-size: 1.5rem;
+          margin-bottom: 1.5rem;
+          border-bottom: 2px solid var(--light-gray);
+          padding-bottom: 0.5rem;
+        }
+
+        .faq-item {
+          background: var(--white);
+          border: 1px solid #e0e0e0;
+          border-radius: 8px;
+          margin-bottom: 1rem;
+          overflow: hidden;
+          box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+          transition: var(--transition);
+        }
+
+        .faq-item:hover {
+          box-shadow: var(--shadow);
+        }
+
+        .faq-question {
+          background: none;
+          border: none;
+          width: 100%;
+          padding: 1.5rem;
+          text-align: left;
+          font-size: 1.1rem;
+          font-weight: 600;
+          color: var(--charcoal);
+          cursor: pointer;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          transition: var(--transition);
+        }
+
+        .faq-question:hover {
+          background-color: var(--light-gray);
+        }
+
+        .faq-question.active {
+          background-color: var(--royal-orange);
+          color: var(--white);
+        }
+
+        .faq-icon {
+          font-size: 1.2rem;
+          transition: transform 0.3s ease;
+        }
+
+        .faq-question.active .faq-icon {
+          transform: rotate(180deg);
+        }
+
+        .faq-answer {
+          padding: 0 1.5rem;
+          max-height: 0;
+          overflow: hidden;
+          transition: all 0.3s ease;
+          background-color: #fafafa;
+        }
+
+        .faq-answer.active {
+          padding: 1.5rem;
+          max-height: 500px;
+        }
+
+        .faq-answer p {
+          margin: 0 0 1rem 0;
+          color: #555;
+          line-height: 1.6;
+        }
+
+        .faq-answer p:last-child {
+          margin-bottom: 0;
+        }
+
+        .faq-answer strong {
+          color: var(--royal-orange);
+        }
+
+        .faq-answer ul {
+          margin: 0.5rem 0;
+          padding-left: 1.5rem;
+        }
+
+        .faq-answer li {
+          margin-bottom: 0.5rem;
+          color: #555;
+        }
+
+
+        /* === BUTTON STYLES === */
+        .button {
+          background-color: var(--royal-orange);
+          color: var(--white);
+          padding: 1rem 2rem;
+          border: none;
+          border-radius: 50px;
+          font-size: 1rem;
+          font-weight: 600;
+          cursor: pointer;
+          text-decoration: none;
+          display: inline-block;
+          transition: var(--transition);
+          box-shadow: var(--shadow);
+        }
+
+        .button:hover {
+          background-color: #e55f00;
+          transform: translateY(-2px);
+          box-shadow: 0 6px 25px rgba(255,107,0,0.3);
+        }
+
+        .button-secondary {
+          background-color: transparent;
+          border: 2px solid var(--royal-orange);
+          color: var(--royal-orange);
+        }
+
+        .button-secondary:hover {
+          background-color: var(--royal-orange);
+          color: var(--white);
+        }
+
+        /* === CARD STYLES === */
+        .card {
+          background: var(--white);
+          padding: 2rem;
+          border-radius: 12px;
+          box-shadow: var(--shadow);
+          margin-bottom: 2rem;
+          transition: var(--transition);
+        }
+
+        .card:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+
+        .card h3 {
+          margin-top: 0;
+          color: var(--charcoal);
+        }
+
+        /* === GRID LAYOUTS === */
+        .grid-2 {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+          gap: 2rem;
+        }
+
+        .grid-3 {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          gap: 2rem;
+        }
+
+        /* === FORM STYLES === */
+        .form-group {
+          margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+          display: block;
+          margin-bottom: 0.5rem;
+          font-weight: 600;
+          color: var(--charcoal);
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+          width: 100%;
+          padding: 1rem;
+          border: 2px solid #ddd;
+          border-radius: 8px;
+          font-size: 1rem;
+          transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+          outline: none;
+          border-color: var(--royal-orange);
+          box-shadow: 0 0 0 3px rgba(255,107,0,0.1);
+        }
+
+        .form-group textarea {
+          min-height: 120px;
+          resize: vertical;
+        }
+
+        /* === ALERT STYLES === */
+        .alert {
+          padding: 1rem 1.5rem;
+          border-radius: 8px;
+          margin-bottom: 2rem;
+        }
+
+        .alert-info {
+          background-color: #e7f3ff;
+          border: 1px solid #b3d9ff;
+          color: #0066cc;
+        }
+
+        .alert-success {
+          background-color: #e8f5e8;
+          border: 1px solid #b3d9b3;
+          color: #2d5d2d;
+        }
+
+        .alert-warning {
+          background-color: #fff3cd;
+          border: 1px solid #ffeaa7;
+          color: #856404;
+        }
+
+        /* === TABLE STYLES === */
+        .table-container {
+          overflow-x: auto;
+          margin: 2rem 0;
+        }
+
+        table {
+          width: 100%;
+          border-collapse: collapse;
+          background: var(--white);
+          border-radius: 8px;
+          overflow: hidden;
+          box-shadow: var(--shadow);
+        }
+
+        th, td {
+          padding: 1rem;
+          text-align: left;
+          border-bottom: 1px solid #eee;
+        }
+
+        th {
+          background-color: var(--light-gray);
+          font-weight: 600;
+          color: var(--charcoal);
+        }
+
+        tr:hover {
+          background-color: #f9f9f9;
+        }
+
+        /* === FOOTER === */
+        footer {
+          background-color: var(--charcoal);
+          color: var(--white);
+          text-align: center;
+          padding: 3rem 0 2rem;
+          margin-top: 5rem;
+        }
+
+        .footer-content {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+          gap: 2rem;
+          margin-bottom: 2rem;
+          text-align: left;
+        }
+
+        .footer-section h4 {
+          color: var(--royal-orange);
+          margin-bottom: 1rem;
+        }
+
+        .footer-section a {
+          color: #ccc;
+          text-decoration: none;
+          display: block;
+          margin-bottom: 0.5rem;
+          transition: var(--transition);
+        }
+
+        .footer-section a:hover {
+          color: var(--royal-orange);
+        }
+
+        .footer-bottom {
+          border-top: 1px solid #444;
+          padding-top: 2rem;
+          text-align: center;
+          color: #999;
+        }
+
+        /* === MOBILE STYLES === */
+        @media (max-width: 768px) {
+          .nav-links {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: var(--charcoal);
+            flex-direction: column;
+            box-shadow: var(--shadow);
+          }
+
+          .nav-links.active {
+            display: flex;
+          }
+
+          .nav-links li {
+            margin: 0;
+            border-bottom: 1px solid #444;
+          }
+
+          .nav-links a {
+            display: block;
+            padding: 1rem 2rem;
+          }
+
+          .menu-toggle {
+            display: block;
+          }
+
+          .container {
+            padding: 0 1rem;
+          }
+
+          .container-narrow {
+            padding: 0 1rem;
+          }
+
+          nav .nav-container {
+            padding: 0 1rem;
+          }
+
+          .page-header {
+            padding: 6rem 0 3rem;
+          }
+
+          .main-content {
+            padding: 3rem 0;
+          }
+
+          .grid-2 {
+            grid-template-columns: 1fr;
+          }
+
+          .grid-3 {
+            grid-template-columns: 1fr;
+          }
+
+          .footer-content {
+            grid-template-columns: 1fr;
+            text-align: center;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .grid-2 {
+            grid-template-columns: 1fr;
+          }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+				<a href="index.html">
+					<img src="SPlogo1024transsm.webp" alt="soundperfect" class="logo-img">
+				</a>
+			</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <!-- <li><a href="features.html">Features</a></li>
+                <li><a href="app.html">App</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="about.html">Method</a></li> -->
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="menu-toggle" id="menuToggle">☰</button>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Frequently Asked Questions</h1>
+            <p>Everything you need to know about <span class="sound">sound</span><span class="perfect">perfect</span> and your pronunciation journey </p>
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span>/</span>
+                <span>FAQ</span>
+            </div>
+        </div>
+    </section>
+
+<!-- FAQ Section -->
+        <section class="faq-section">
+            <div class="container">
+                
+                <!-- Getting Started -->
+                <div class="faq-category">
+                    <h2>Getting Started</h2>
+                    
+                    <!-- <div class="faq-item">
+                        <button class="faq-question">
+                            Is soundperfect really designed specifically for Korean and Japanese speakers?
+                            <span class="faq-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Yes! Unlike other apps that use the same curriculum for all learners, <span class="sound">sound</span><span class="perfect">perfect</span> is built from the ground up for Korean and Japanese speakers. We understand your specific challenges:</p>
+                            <ul>
+                                <li><strong>L/R distinctions</strong> - Why Korean ㄹ and Japanese ラ don't match English sounds</li>
+                                <li><strong>TH sounds</strong> - Techniques for /θ/ and /ð/ that don't exist in your language</li>
+                                <li><strong>Consonant clusters</strong> - Managing combinations like "str" and "spr"</li>
+                                <li><strong>Stress patterns</strong> - English rhythm that differs from syllable-timed languages</li>
+                                <li><strong>Long vowel sounds</strong> - Distinctions like ship/sheep that matter for comprehensibility</li>
+                            </ul>
+                        </div>
+                    </div> -->
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            I'm a complete beginner. Will these apps work for me?
+                            <span class="faq-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Absolutely! Our approach:</p>
+                            <ul>
+                                <li><strong>Basics first</strong> - We use the 'high functional load' method - meaning we start with the sounds most likely to cause native speakersto struggle understanding you,and build from there </li>
+                                <li><strong>Step-by-step progression</strong> - Each lesson builds on the previous one</li>
+                                <li><strong>Video & audio guides</strong> - Free forever native video and audio for persistent listening practice</li>
+                            
+                            </ul>
+                            <p>Many of our most successful users started as complete beginners!</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            How is this different from just watching YouTube pronunciation videos?
+                            <span class="faq-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>We provide what YouTube videos can't:</p>
+                            <ul>
+                                <li><strong>Personal feedback</strong> - Advanced AI analyzes YOUR pronunciation and tells you exactly what to improve</li>
+                                <li><strong>Structured progression</strong> - Research-based curriculum vs. random video browsing</li>
+                                <li><strong>Real-time guidance</strong> - Immediate feedback as you practice, not just passive watching</li>
+                         
+                            </ul>
+                            <p>Think of YouTube as inspiration, but our apps as your personal pronunciation coach.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- The Method -->
+                <div class="faq-category">
+                    <h2>The Method</h2>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            Why only 15 minutes per day? Shouldn't I practice more?
+                            <span class="faq-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Research shows that <strong>15 minutes of focused daily practice is more effective than sporadic longer sessions</strong>. Here's why:</p>
+                            <ul>
+                                <li><strong>Muscle memory development</strong> - Pronunciation requires training your mouth muscles, which develops best through consistent short practice</li>
+                                <li><strong>Prevents fatigue</strong> - Your mouth and brain get tired, making longer sessions less productive</li>
+                                <li><strong>Habit formation</strong> - 15 minutes is sustainable daily, creating lifelong pronunciation improvement habits</li>
+                                <li><strong>Optimal attention span</strong> - Focused pronunciation practice requires intense concentration</li>
+                            </ul>
+                            <p>You can always practice more, but our curriculum is designed around this optimal window.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            What does "functional load" mean and why should I care?
+                            <span class="faq-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p><strong>Functional load</strong> measures how much a pronunciation error affects listener comprehension. We prioritize errors with the highest impact first.</p>
+                            <p><strong>High functional load:</strong> L/R confusion affects hundreds of word pairs (light/right, play/pray, glass/grass), making it critical for comprehensibility.</p>
+                            <p><strong>Low functional load:</strong> Some vowel distinctions might only affect a few word pairs, so we teach them later.</p>
+                            <p>This research-based approach means <strong>you see dramatic improvement faster</strong> by focusing on what matters most for being understood.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            Will this help with my accent or make me sound "native"?
+                            <span class="faq-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Our goal isn't to eliminate your accent — it's to make you <strong>clearly understood and confident</strong>. Here's what we focus on:</p>
+                            <ul>
+                                <li><strong>Comprehensibility</strong> - Being easily understood by native speakers</li>
+                                <li><strong>Confidence</strong> - Feeling comfortable speaking in professional and social situations</li>
+                                <li><strong>Reduced errors</strong> - Minimizing pronunciation mistakes that cause confusion</li>
+                                <li><strong>Natural rhythm</strong> - Developing stress and intonation patterns</li>
+                            </ul>
+                            <p>Many users find their accent naturally lightens as their pronunciation improves, but our priority is <strong>clear, confident communication</strong>.</p>
+                        </div>
+                    </div>
+                </div>
+				
+				<!-- Results & Progress -->
+                <div class="faq-category">
+                    <h2>Results & Progress</h2>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            How long before I see real improvement?
+                            <span class="faq-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p><strong>Typical timeline:</strong></p>
+                            <ul>
+                                <li><strong>Week 1:</strong> Better awareness of your pronunciation patterns</li>
+                                <li><strong>Week 2-4:</strong> Noticeable improvement in target sounds (L/R, TH, etc.)</li>
+                                <li><strong>Month 2-3:</strong> Friends and colleagues start commenting on clearer speech</li>
+                                <li><strong>Month 6-12:</strong> Significant confidence improvement in professional situations</li>
+                            </ul>
+                            <p><strong>Remember:</strong> Pronunciation is like physical exercise - consistent daily practice creates lasting muscle memory. Some sounds improve quickly, others take patience.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            What if I miss days? Will it ruin my progress?
+                            <span class="faq-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p><strong>Don't worry!</strong> Missing occasional days won't ruin your progress:</p>
+                            <ul>
+                              
+                                <li><strong>Progress retention</strong> - Pronunciation skills stay with you even after breaks</li>
+                                <li><strong>Optimal results</strong> - Try to practice at least 4-5 days per week for optimal results.</li>
+                            </ul>
+                          
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            I've been practicing for weeks but still make mistakes. Is something wrong?
+                            <span class="faq-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p><strong>This is completely normal!</strong> Pronunciation improvement isn't linear:</p>
+                            <ul>
+                                <li><strong>Muscle memory takes time</strong> - Your mouth needs to learn new movement patterns</li>
+                                <li><strong>Mistakes are part of learning</strong> - Even advanced speakers occasionally slip back to old patterns</li>
+                                <li><strong>Focus on trends</strong> - Are you making fewer mistakes than last month? That's progress!</li>
+                                <li><strong>Automatic vs. controlled speech</strong> - New sounds work in practice first, then gradually transfer to natural conversation</li>
+                            </ul>
+                            <p>Trust the process - consistent practice always leads to improvement, even when it doesn't feel like it day-to-day.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Technical Questions -->
+                <div class="faq-category">
+                    <h2>Technical Questions</h2>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            How accurate is the pronunciation feedback?
+                            <span class="faq-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>We use <strong>professional-grade speech analysis technology</strong> that provides:</p>
+                            <ul>
+                                <li><strong>Phoneme-level accuracy</strong> - Analysis of individual sounds within words</li>
+                                <li><strong>Word stress evaluation</strong> - Detection of emphasis patterns</li>
+                                <li><strong>Fluency metrics</strong> - Speaking rate and pause analysis</li>
+                                <li><strong>Error identification</strong> - Specific feedback on missed, added, or substituted sounds</li>
+                            </ul>
+                            <p>The technology is trained on thousands of hours of native audio and has undergone rigorous internal and eternal evaluation. The analysis engine is trusted by major education companies worldwide.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            Can I use this app offline?
+                            <span class="faq-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p><strong>Partial offline functionality:</strong></p>
+                            <ul>
+                                <li><strong>Lesson content</strong> - Access to all lesson materials and native speaker audio</li>
+                                <li><strong>Hints, tips, guides etc</strong> - even native speaker videos in most apps</li>
+                            </ul>
+                            <p><strong>Requires internet connection:</strong></p>
+                            <ul>
+                                <li><strong>Detailed analysis</strong> - Comprehensive pronunciation feedback</li>
+                                <li><strong>Progress sync</strong> - Backing up your progress to the cloud</li>
+                            </ul>
+                            <p>For the core AI feedback functionality a data connection is needed. WiFi is recommended depending on your data plan.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            What devices and operating systems do you support?
+                            <span class="faq-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p><strong>iOS:</strong> iPhone 8 and newer, iOS 13 or later</p>
+                            <p><strong>Android:</strong> Android 8.0 (API level 26) or newer</p>
+                            <p><strong>Hardware requirements:</strong></p>
+                            <ul>
+                                <li>Microphone (built-in or external)</li>
+                                <li>Speakers or headphones</li>
+                                <li>At least 100MB storage space</li>
+                                <li>Internet connection for detailed feedback and sync</li>
+                            </ul>
+                            <p>We recommend using headphones for the best pronunciation practice experience.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pricing & Subscription -->
+                <div class="faq-category">
+                    <h2>Pricing & Credits</h2>
+                    
+                   <!-- <div class="faq-item">
+                        <button class="faq-question">
+                            Why is soundperfect so much cheaper than other pronunciation apps?
+                            <span class="faq-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>We believe quality pronunciation coaching shouldn't cost a fortune. Here's how we keep costs down while maintaining quality:</p>
+                            <ul>
+                                <li><strong>Focused curriculum</strong> - We don't waste resources on thousands of random lessons</li>
+                                <li><strong>Efficient technology</strong> - Smart use of advanced speech analysis without unnecessary overhead</li>
+                                <li><strong>Direct approach</strong> - No expensive celebrity endorsements or flashy marketing</li>
+                                <li><strong>Korean/Japanese focus</strong> - Serving a specific community efficiently rather than trying to be everything to everyone</li>
+                            </ul>
+                            <p>At ₩160 per day (annual plan), it's less per month for professional pronunciation coaching than having one tall Americano!</p>
+                        </div>
+                    </div> -->
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            I can start for free, right?
+                            <span class="faq-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p><strong>Absolutely:</strong></p>
+                            <ul>
+                                <li><strong>Free credits</strong> - try all features without spending money or entering your card details</li>
+                                <li><strong>Free content forever</strong> - Even if you never buy a single credit you get full lifetime access to all other features such as soundguides, speaking hints, native audio and video files etc.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+					
+					<div class="faq-item">
+                        <button class="faq-question">
+                            How do credits work?
+                            <span class="faq-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p><strong>1 credit = 1 AI feedback</strong></p>
+                            <ul>
+                                <li>Any credit purchase unlocks all premium content forever </li>
+                                <li>Credits never expire </li>
+                      
+                            </ul>
+                            <p>Please note that if you ever delete your account you would lose any unused credits.</p>
+                        </div>
+                    </div>
+                </div>
+
+                
+
+                <!-- Support -->
+                <div class="faq-category">
+                    <h2>Support</h2>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            I'm having technical issues with the app. How can I get help?
+                            <span class="faq-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p><strong>Quick fixes to try first:</strong></p>
+                            <ul>
+                                <li>Restart the app completely</li>
+                                <li>Check your internet connection</li>
+                                <li>Update to the latest app version</li>
+                                <li>Restart your device</li>
+                            </ul>
+                            <p><strong>Still having issues?</strong></p>
+                            <ul>
+                                <li><strong>Conact us</strong> 
+                                <li><strong>Include:</strong> Your device type, OS version, and description of the problem</li>
+                                <li><strong>Response time:</strong> Usually within 24 hours</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            Can I suggest new features or improvements?
+                            <span class="faq-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p><strong>Absolutely!</strong> User feedback drives our development:</p>
+                            <ul>
+                                <li><strong>Feature requests</strong> - Tell us what would help your pronunciation journey</li>
+                                <li><strong>Curriculum suggestions</strong> - What sounds or topics would you like to see?</li>
+                                <li><strong>UI improvements</strong> - How can we make the app easier to use?</li>
+                                <li><strong>Content ideas</strong> - Specific practice scenarios you'd find helpful</li>
+                            </ul>
+                            <p>Contact us with subject line "Feature Request" - we read every suggestion!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section 
+        <section class="cta-section">
+            <div class="container">
+                <h2>Ready to Start Your Pronunciation Journey?</h2>
+                <p>Join thousands of Korean and Japanese learners improving their English confidence</p>
+                <a href="index.html#cta" class="button">Start Your 7-Day Free Trial</a>
+            </div>
+        </section> -->
+    
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <a href="#" id="contact-link">Email Us</a>
+                    <p>807 Gold Plaza A<br>Dongbaek, Gyeonnggi-do</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <a href="legal.html">Terms, Privacy, Cookies</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <a href="faq.html">FAQ</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <a href="about.html">About Us</a>
+                    <a href="careers.html">Careers</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 soundperfect. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        navLinks.addEventListener('click', (e) => {
+            if (e.target.tagName === 'A') {
+                navLinks.classList.remove('active');
+            }
+        });
+		
+		        // FAQ accordion functionality
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const faqItem = button.parentElement;
+                const answer = faqItem.querySelector('.faq-answer');
+                const isActive = button.classList.contains('active');
+
+                // Close all other FAQ items
+                document.querySelectorAll('.faq-question').forEach(otherButton => {
+                    if (otherButton !== button) {
+                        otherButton.classList.remove('active');
+                        otherButton.parentElement.querySelector('.faq-answer').classList.remove('active');
+                    }
+                });
+
+                // Toggle current FAQ item
+                if (isActive) {
+                    button.classList.remove('active');
+                    answer.classList.remove('active');
+                } else {
+                    button.classList.add('active');
+                    answer.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const navHeight = document.querySelector('nav').offsetHeight;
+                    const targetPosition = target.offsetTop - navHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.backgroundColor = 'rgba(44, 44, 46, 0.95)';
+                nav.style.backdropFilter = 'blur(10px)';
+            } else {
+                nav.style.backgroundColor = 'var(--charcoal)';
+                nav.style.backdropFilter = 'none';
+            }
+        });
+    </script>
+	
+	<script>
+  document.getElementById('contact-link').addEventListener('click', function() {
+    location.href = 'mailto:' + ['info','soundperfect.app'].join('@');
+  });
+</script>
+	
+	<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+	<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

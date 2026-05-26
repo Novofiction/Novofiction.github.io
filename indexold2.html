@@ -1,0 +1,1559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>soundperfect - Pronunciation Perfected</title>
+	
+	<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+	<link rel="manifest" href="/site.webmanifest">
+	
+    <style>
+        /* === GLOBAL STYLES === */
+        :root {
+          --charcoal: #2C2C2E;
+          --royal-orange: #fd832c;
+          --light-gray: #f4f4f4;
+          --white: #ffffff;
+          --font-main: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+          --shadow: 0 4px 20px rgba(0,0,0,0.1);
+          --transition: all 0.3s ease;
+        }
+
+        * {
+          box-sizing: border-box;
+        }
+
+        body {
+          margin: 0;
+          padding: 0;
+          font-family: var(--font-main);
+          background-color: var(--white);
+          color: var(--charcoal);
+          line-height: 1.6;
+        }
+
+        .container {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 2rem;
+        }
+		
+		.sound {
+            color: #5b5e63;
+        }
+		
+		.perfect {
+            color: var(--royal-orange);
+        }
+
+        /* === NAVIGATION === */
+        nav {
+          background-color: var(--charcoal);
+          padding: 1rem 0;
+          position: fixed;
+          width: 100%;
+          top: 0;
+          z-index: 1000;
+          box-shadow: var(--shadow);
+          transition: var(--transition);
+        }
+
+        nav .nav-container {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 2rem;
+        }
+
+        nav .logo {
+          display: flex;
+          align-items: center;
+        }
+
+        nav .logo-img {
+          height: 40px;
+          margin-right: 0.5rem;
+        }
+
+        nav .logo-text {
+          color: var(--white);
+          font-size: 1.5rem;
+          font-weight: bold;
+        }
+
+        .nav-links {
+          display: flex;
+          list-style: none;
+          margin: 0;
+          padding: 0;
+        }
+
+        .nav-links li {
+          margin-left: 2rem;
+        }
+
+        nav a {
+          color: var(--white);
+          text-decoration: none;
+          font-weight: 500;
+          transition: var(--transition);
+        }
+
+        nav a:hover {
+          color: var(--royal-orange);
+        }
+
+        /* Mobile Menu */
+        .menu-toggle {
+          display: none;
+          background: none;
+          border: none;
+          color: var(--white);
+          font-size: 1.5rem;
+          cursor: pointer;
+        }
+
+        /* === HERO SECTION === */
+        .hero {
+          height: 100vh;
+          background: linear-gradient(135deg, rgba(44,44,46,0.7), rgba(255,107,0,0.2)), 
+                      url('2678.webp') center/cover;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          color: var(--white);
+          position: relative;
+        }
+
+        .hero-content {
+          z-index: 2;
+          max-width: 800px;
+          padding: 2rem;
+        }
+
+        .hero h1 {
+          font-size: clamp(2.5rem, 5vw, 4rem);
+          margin-bottom: 1.5rem;
+          font-weight: 300;
+          letter-spacing: -1px;
+        }
+
+        .hero p {
+          font-size: clamp(1.1rem, 2vw, 1.3rem);
+          margin-bottom: 2rem;
+          opacity: 0.9;
+        }
+
+        /* === BUTTON STYLES === */
+        .button {
+          background-color: var(--royal-orange);
+          color: var(--white);
+          padding: 1rem 2rem;
+          border: none;
+          border-radius: 50px;
+          font-size: 1rem;
+          font-weight: 600;
+          cursor: pointer;
+          text-decoration: none;
+          display: inline-block;
+          transition: var(--transition);
+          box-shadow: var(--shadow);
+        }
+
+        .button:hover {
+          background-color: #e55f00;
+          transform: translateY(-2px);
+          box-shadow: 0 6px 25px rgba(255,107,0,0.3);
+        }
+
+        .button-secondary {
+          background-color: transparent;
+          border: 2px solid var(--white);
+          margin-left: 1rem;
+        }
+
+        .button-secondary:hover {
+          background-color: var(--white);
+          color: var(--charcoal);
+        }
+
+        /* === SECTION STYLES === */
+        section {
+          padding: 1rem 0;
+        }
+
+        .section-white {
+          background-color: var(--white);
+        }
+
+        .section-light {
+          background-color: var(--light-gray);
+        }
+
+        .section-title {
+          text-align: center;
+          margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+          font-size: clamp(2rem, 4vw, 2.5rem);
+          margin-bottom: 1rem;
+          font-weight: 300;
+        }
+
+        .section-title p {
+          font-size: 1.1rem;
+          color: #666;
+          max-width: 600px;
+          margin: 0 auto;
+        }
+
+        /* === NEW STYLES FOR PAIN POINTS SECTION === */
+        .pain-points {
+          background: linear-gradient(135deg, #f8f9fa, #ffffff);
+          border-radius: 20px;
+          padding: 3rem 2rem;
+          margin: 3rem auto;
+          max-width: 800px;
+        }
+
+        .pain-points h3 {
+          color: var(--charcoal);
+          text-align: center;
+          font-size: 1.5rem;
+          margin-bottom: 2rem;
+        }
+
+        .problems-list {
+          list-style: none;
+          padding: 0;
+          margin-bottom: 2rem;
+        }
+
+        .problems-list li {
+          padding: 0.75rem 0;
+          font-size: 1rem;
+          display: flex;
+          align-items: flex-start;
+          line-height: 1.6;
+        }
+
+        .problems-list li:before {
+          content: "X";
+          color: var(--royal-orange);
+          margin-right: 1rem;
+          flex-shrink: 0;
+		  font-weight: bold;
+        }
+
+        .solutions-list {
+          list-style: none;
+          padding: 0;
+        }
+
+        .solutions-list li {
+          padding: 0.75rem 0;
+          font-size: 1rem;
+          display: flex;
+          align-items: flex-start;
+          line-height: 1.6;
+		  flex-wrap: nowrap;
+        }
+
+        .solutions-list li:before {
+          content: "✓";
+          color: var(--royal-orange);
+          margin-right: 1rem;
+          flex-shrink: 0;
+		  font-weight: bold;
+        }
+       
+
+		.tick {
+		  font-weight: bold;
+          color: var(--royal-orange);
+		  }
+		  
+		.check {
+    margin-right: 0rem;
+    font-size: 1.0rem;
+}
+
+.cross {
+   font-weight: bold;
+         
+}
+
+
+        /* === FEATURES GRID === */
+        .features-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          gap: 2rem;
+          margin-top: 3rem;
+        }
+
+        .feature-card {
+          background: var(--white);
+          padding: 2rem;
+          border-radius: 12px;
+          box-shadow: var(--shadow);
+          text-align: center;
+          transition: var(--transition);
+        }
+
+        .feature-card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+
+        .feature-icon {
+          width: 60px;
+          height: 60px;
+          background-color: var(--royal-orange);
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin: 0 auto 1rem;
+          font-size: 1.5rem;
+          color: var(--white);
+        }
+		
+		.free-icon {
+          width: 60px;
+          height: 60px;
+          background-color: var(--white);
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin: 0 auto 1rem;
+          font-size: 1.5rem;
+          color: var(--white);
+        }
+		
+		.trial-highlight {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 1rem 2rem;
+    border-radius: 30px;
+    margin: 1.5rem 0;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.trial-section {
+    background: linear-gradient(135deg, #fff8f3, #ffffff);
+    padding: 4rem 0;
+}
+
+.trial-highlight-box {
+    background: white;
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 8px 40px rgba(255, 107, 0, 0.15);
+    border: 2px solid var(--royal-orange);
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+        /* === TRANSFORMATION TIMELINE === */
+        .timeline {
+          margin: 4rem 0;
+          max-width: 900px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        .timeline-item {
+          display: flex;
+          align-items: flex-start;
+          margin-bottom: 2.5rem;
+          padding: 2rem;
+          background: var(--white);
+          border-radius: 15px;
+          box-shadow: var(--shadow);
+          border-left: 5px solid var(--royal-orange);
+          transition: var(--transition);
+        }
+
+        .timeline-item:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
+
+        .timeline-month {
+          background: var(--royal-orange);
+          color: white;
+          padding: 1rem 1.5rem;
+          border-radius: 10px;
+          font-weight: bold;
+          margin-right: 2rem;
+          min-width: 120px;
+          text-align: center;
+          flex-shrink: 0;
+        }
+
+        .timeline-content h4 {
+          color: var(--charcoal);
+          margin-bottom: 0.5rem;
+          font-size: 1.3rem;
+        }
+
+        .timeline-content p {
+          color: #666;
+          margin: 0;
+          line-height: 1.6;
+        }
+
+        /* === APP SHOWCASE SECTION === */
+        .showcase-content {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+          gap: 3rem;
+          margin-top: 3rem;
+        }
+
+        .preview-placeholder,
+        .feedback-placeholder {
+          background: var(--white);
+          padding: 4rem 2rem;
+          border-radius: 12px;
+          box-shadow: var(--shadow);
+          text-align: center;
+          border: 2px dashed #ddd;
+          transition: var(--transition);
+        }
+
+        .preview-placeholder:hover,
+        .feedback-placeholder:hover {
+          border-color: var(--royal-orange);
+          transform: translateY(-3px);
+        }
+
+        .preview-placeholder p:first-child,
+        .feedback-placeholder p:first-child {
+          font-size: 2rem;
+          margin-bottom: 1rem;
+        }
+
+        .preview-placeholder p:last-child,
+        .feedback-placeholder p:last-child {
+          color: #666;
+          font-size: 1rem;
+        }
+
+.feature-comparison-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.feature-card {
+    background: var(--white);
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    border-left: 4px solid var(--royal-orange);
+    transition: var(--transition);
+}
+
+.feature-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+}
+
+.feature-header h3 {
+    color: var(--charcoal);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.comparison-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.us-result, .them-result {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem;
+    border-radius: 8px;
+    gap: 0.75rem;
+}
+
+.us-result {
+    background: #ffddc4;
+    border: 1px solid #FF6B00;
+}
+
+.them-result {
+    background: #f4f4f4;
+    border: 1px solid #cccccc;
+}
+
+.result-text {
+    font-size: 0.95rem;
+    color: var(--charcoal);
+}
+
+.highlight-card {
+    border-left-color: #34C759;
+    background: linear-gradient(135deg, #f8fff8, #ffffff);
+}
+
+.highlight-card .us-result {
+    background: #e8f5e8;
+    font-weight: 600;
+}
+
+/* Icons */
+.check-icon, .cross-icon, .money-icon, .expensive-icon {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+
+/* Icons */
+.check-icon, .cross-icon, .money-icon, .expensive-icon {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .comparison-table {
+        margin: 0 1rem;
+    }
+    
+    .comparison-header,
+    .comparison-row {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .comparison-header > div,
+    .comparison-row > div {
+        padding: 1rem;
+        border-bottom: 1px solid #ddd;
+    }
+    
+    .feature-col {
+        background-color: var(--light-gray) !important;
+        font-weight: bold;
+        text-align: center !important;
+        padding-left: 1rem !important;
+    }
+    
+    .comparison-row .feature-col {
+        color: var(--royal-orange);
+    }
+}
+
+/* === FREE APPS SECTION === */
+.free-apps-list {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.free-app-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+  padding: 2rem;
+  background: linear-gradient(135deg, #f8f9fa, #ffffff);
+  border-radius: 15px;
+  border-left: 4px solid var(--royal-orange);
+  margin-bottom: 1.5rem;
+  transition: var(--transition);
+}
+
+.free-app-item:hover {
+  transform: translateX(5px);
+  box-shadow: var(--shadow);
+}
+
+.free-app-icon {
+  flex-shrink: 0;
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, var(--royal-orange), #ff8533);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  color: var(--white);
+}
+
+.free-app-content {
+  flex: 1;
+}
+
+.free-app-content h3 {
+  color: var(--charcoal);
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.free-app-content p {
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.free-app-badges {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.badge {
+  background-color: var(--light-gray);
+  color: var(--charcoal);
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.free-app-links {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.text-link {
+  color: var(--royal-orange);
+  text-decoration: none;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.text-link:hover {
+  color: #e55f00;
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .free-app-item {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+  }
+
+  .free-app-icon {
+    margin: 0 auto;
+  }
+
+  .free-app-links {
+    justify-content: center;
+  }
+
+  .free-app-badges {
+    justify-content: center;
+  }
+}
+
+        /* === PRICING SECTION === */
+        .pricing-section {
+          background: linear-gradient(35deg, #edeff2, var(--light-gray));
+        }
+
+        .pricing-highlight {
+          background: linear-gradient(135deg, var(--royal-orange), #ff8533);
+          color: white;
+          padding: 2rem;
+          border-radius: 15px;
+          text-align: center;
+          margin: 2rem auto 3rem;
+          max-width: 600px;
+        }
+
+        .pricing-highlight h3 {
+          margin-bottom: 1rem;
+          font-size: 1.8rem;
+        }
+
+        .pricing-highlight .big-price {
+          font-size: 3rem;
+          font-weight: bold;
+          margin: 1rem 0;
+        }
+
+        .pricing-highlight .old-price {
+          text-decoration: line-through;
+          opacity: 0.8;
+          margin-right: 1rem;
+        }
+
+        .guarantee {
+          background: #e8f5e8;
+          color: #2d5d2d;
+          padding: 1.5rem;
+          border-radius: 10px;
+          margin: 2rem auto;
+          max-width: 500px;
+          text-align: center;
+          font-weight: 600;
+        }
+
+        /* === TESTIMONIALS === */
+        .testimonials-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          gap: 2rem;
+          margin-top: 4rem;
+        }
+
+        .testimonial-card {
+          background: var(--white);
+          padding: 2rem;
+          border-radius: 12px;
+          box-shadow: var(--shadow);
+          text-align: left;
+          transition: var(--transition);
+          position: relative;
+        }
+
+        .testimonial-card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+
+        .testimonial-card::before {
+          content: '"';
+          position: absolute;
+          top: -10px;
+          left: 20px;
+          font-size: 4rem;
+          color: var(--royal-orange);
+          font-family: serif;
+          line-height: 1;
+        }
+
+        .testimonial-text {
+          font-size: 1.1rem;
+          line-height: 1.6;
+          color: var(--charcoal);
+          margin-bottom: 1.5rem;
+          font-style: italic;
+        }
+
+        .testimonial-author {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+        }
+
+        .author-photo {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          background: linear-gradient(135deg, var(--royal-orange), #ff8533);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: white;
+          font-weight: bold;
+          font-size: 1.2rem;
+        }
+
+        .author-info h4 {
+          margin: 0;
+          color: var(--charcoal);
+          font-size: 1rem;
+          font-weight: 600;
+        }
+
+        .author-info p {
+          margin: 0;
+          color: #666;
+          font-size: 0.9rem;
+        }
+
+        /* === VALUE PROPOSITION === */
+        .value-highlight {
+          background: linear-gradient(135deg, #fff8f3, #ffffff);
+          border: 2px solid var(--royal-orange);
+          border-radius: 20px;
+          padding: 3rem 2rem;
+          margin: 3rem auto;
+          max-width: 700px;
+          text-align: center;
+        }
+
+        .value-highlight h3 {
+          color: var(--royal-orange);
+          font-size: 1.6rem;
+          margin-bottom: 1rem;
+        }
+
+        /* === CTA SECTION === */
+        .cta-section {
+          background: linear-gradient(135deg, var(--charcoal), #1a1a1c);
+          color: var(--white);
+          text-align: center;
+        }
+
+        .cta-section h2 {
+          font-size: clamp(2rem, 4vw, 2.5rem);
+          margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+          font-size: 1.1rem;
+          margin-bottom: 2rem;
+          opacity: 0.9;
+        }
+
+        .download-buttons {
+          display: flex;
+          justify-content: center;
+          gap: 1rem;
+          flex-wrap: wrap;
+        }
+
+        .download-btn {
+          transition: var(--transition);
+        }
+
+        .download-btn:hover {
+          transform: translateY(-3px);
+        }
+
+        /* === FOOTER === */
+        footer {
+          background-color: var(--charcoal);
+          color: var(--white);
+          text-align: center;
+          padding: 3rem 0 2rem;
+        }
+
+        .footer-content {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+          gap: 2rem;
+          margin-bottom: 2rem;
+          text-align: left;
+        }
+
+        .footer-section h4 {
+          color: var(--royal-orange);
+          margin-bottom: 1rem;
+        }
+
+        .footer-section a {
+          color: #ccc;
+          text-decoration: none;
+          display: block;
+          margin-bottom: 0.5rem;
+          transition: var(--transition);
+        }
+
+        .footer-section a:hover {
+          color: var(--royal-orange);
+        }
+
+        .footer-bottom {
+          border-top: 1px solid #444;
+          padding-top: 2rem;
+          text-align: center;
+          color: #999;
+        }
+		
+		/* === LANGUAGE DROPDOWN === */
+.language-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.language-toggle {
+  background: none;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: var(--transition);
+  min-width: 70px;
+  justify-content: center;
+}
+
+.language-toggle:hover {
+  border-color: var(--royal-orange);
+  background-color: rgba(255, 107, 0, 0.1);
+}
+
+.language-dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  background-color: var(--white);
+  min-width: 120px;
+  box-shadow: var(--shadow);
+  border-radius: 8px;
+  z-index: 1001;
+  overflow: hidden;
+  margin-top: 0.5rem;
+}
+
+.language-dropdown.active .language-dropdown-content {
+  display: block;
+}
+
+.language-option {
+  display: block;
+  padding: 0.75rem 1rem;
+  color: var(--charcoal);
+  text-decoration: none;
+  transition: var(--transition);
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.language-option:hover {
+  background-color: var(--light-gray);
+  color: var(--royal-orange);
+}
+
+.language-option.active {
+  background-color: var(--royal-orange);
+  color: var(--white);
+}
+
+.flag-icon {
+  width: 20px;
+  height: 15px;
+  border-radius: 2px;
+  display: inline-block;
+}
+
+.flag-en { 
+  background: linear-gradient(to bottom, #012169 33%, white 33%, white 66%, #C8102E 66%); 
+}
+.flag-ko { 
+  background: linear-gradient(to bottom, white 25%, #CD2E3A 25%, #CD2E3A 50%, #0047A0 50%, #0047A0 75%, white 75%); 
+}
+.flag-ja { 
+  background: radial-gradient(circle at center, #BC002D 30%, white 32%); 
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .language-dropdown {
+    margin-top: 1rem;
+  }
+  
+  .language-dropdown-content {
+    position: static;
+    box-shadow: none;
+    background: #3a3a3c;
+    margin-top: 0;
+    border-radius: 0;
+  }
+  
+  .language-option {
+    color: white;
+    border-bottom: 1px solid #555;
+  }
+  
+  .language-option:hover {
+    background-color: #555;
+    color: var(--royal-orange);
+  }
+}
+
+        /* === MOBILE STYLES === */
+        @media (max-width: 768px) {
+          .nav-links {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: var(--charcoal);
+            flex-direction: column;
+            box-shadow: var(--shadow);
+          }
+
+          .nav-links.active {
+            display: flex;
+          }
+
+          .nav-links li {
+            margin: 0;
+            border-bottom: 1px solid #444;
+          }
+
+          .nav-links a {
+            display: block;
+            padding: 1rem 2rem;
+          }
+
+          .menu-toggle {
+            display: block;
+          }
+
+          .hero {
+            height: 80vh;
+          }
+
+          .button-secondary {
+            margin-left: 0;
+            margin-top: 1rem;
+            display: block;
+          }
+
+          section {
+            padding: 3rem 0;
+          }
+
+          .features-grid {
+            grid-template-columns: 1fr;
+          }
+
+          .showcase-content {
+            grid-template-columns: 1fr;
+          }
+
+          .timeline-item {
+            flex-direction: column;
+            text-align: center;
+          }
+
+          .timeline-month {
+            margin-bottom: 1rem;
+            margin-right: 0;
+          }
+
+          .footer-content {
+            grid-template-columns: 1fr;
+            text-align: center;
+          }
+
+          .pain-points {
+            padding: 2rem 1rem;
+          }
+        }
+		
+		@media (max-width: 768px) { 
+            .hero { 
+                height: 100vh; 
+                padding-top: 80px; 
+                display: flex; 
+                align-items: center; 
+                justify-content: center; 
+            } 
+            .hero-content { 
+                padding: 1rem; 
+                max-width: 100%; 
+            } 
+            .hero h1 { 
+                font-size: clamp(1.8rem, 8vw, 2.5rem); 
+                line-height: 1.2; 
+                margin-bottom: 1rem; 
+            } 
+            .hero h3 { 
+                font-size: clamp(1rem, 4vw, 1.2rem); 
+                margin-bottom: 1rem; 
+                line-height: 1.3; 
+            } 
+            .hero p { 
+                font-size: clamp(0.9rem, 3.5vw, 1rem); 
+                margin-bottom: 1.5rem; 
+                line-height: 1.5; 
+            } 
+            .hero .button { 
+                display: block; 
+                width: 100%; 
+                max-width: 280px; 
+                margin: 0 auto 1rem auto; 
+                text-align: center; 
+            } 
+            .button-secondary { 
+                margin-left: 0; 
+                margin-top: 0.5rem; 
+                display: block; 
+                width: 100%; 
+                max-width: 280px; 
+                margin-left: auto; 
+                margin-right: auto; 
+            } 
+        }
+
+        @media (max-width: 480px) {
+          .container {
+            padding: 0 1rem;
+          }
+
+          nav .nav-container {
+            padding: 0 1rem;
+          }
+
+          .hero {
+            padding-top: 70px;
+          }
+
+        <!--   .hero h1 {
+            font-size: clamp(1.5rem, 7vw, 2rem);
+          } -->
+
+          .hero-content {
+            padding: 0.5rem;
+          }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+    <div class="nav-container">
+        <div class="logo">
+            <a href="index.html">
+                <img src="SPlogo1024transsm.webp" alt="SoundPerfect" class="logo-img">
+            </a>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">Home</a></li>
+            <li><a href="speake.html">Speak-E</a></li>
+            <li><a href="speakk.html">Speak-K</a></li>
+			<li><a href="speakingscorer.html">Speaking Scorer</a></li>
+            <li>
+                <div class="language-dropdown" id="languageDropdown">
+                    <button class="language-toggle" id="languageToggle">
+                        EN ▼
+                    </button>
+                    <div class="language-dropdown-content">
+                        <a href="index.html" class="language-option active" data-lang="en">
+                            English
+                        </a>
+                        <a href="#" class="language-option" data-lang="ko">
+                            한국어
+                        </a>
+                        <a href="#" class="language-option" data-lang="ja">
+                            日本語
+                        </a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <button class="menu-toggle" id="menuToggle">☰</button>
+    </div>
+</nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Sound Natural. Speak Confidently. </h1>
+             <h2>Listen. Record yourself. Then see what to fix with industry-leading speech analysis for language learners.</h2>
+            <!-- <div class="trial-highlight">
+				<strong>Built specifically for Korean & Japanese speakers.</strong>
+				
+			</div>--><br>
+			<a href="#apps" class="button">See our apps</a>
+            
+        </div>
+    </section>
+
+  
+
+    <!-- Apps Section -->
+    <section id="apps" class="section-light">
+        <div class="container">
+            <div class="section-title">
+                <h2>AI-powered pronunciation feedback for every learner</h2>
+               
+            </div>
+            
+            
+            <div class="features-grid">
+                
+				<div class="feature-card">
+				<div><img class="feature-icon" src="iconscorer.png"></div>
+                    <h3>Speaking Scorer</h3>
+					<h4>Content and Pronunciation scoring for IELTS & TOEFL speaking style tests</h4>
+					<img src="scorerforhome.webp">
+                    <p>Comprehensive AI feedback and scoring on test style speaking tasks. Scores for content, pronunciation, fluency, grammar, vocabulary and word for word transcriptions of your speech.</p>
+					<p><a href="speakingscorer.html" class="button">Learn more >></a></p><br>			
+								<div class="download-buttons">
+								<a href="#" class="download-btn">
+								<img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play" style="height: 60px;">
+								</a>
+								<a href="#" class="download-btn">
+								<img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="Download on the App Store" style="height: 60px;">
+								</a>
+								</div> 
+				</div>
+                <div class="feature-card">
+                    <div><img class="feature-icon" src="iconsoundmatch512.png"></div>
+                    <h3>SoundMatch</h3>
+					<h4>A 'find the matching sounds' game covering phonemes, rhyming words and minimal pairs (ship/sheep or glass/grass). Have fun while honing your listening skills. Starts easy, gets challenging quickly!</h4>
+					<img src="speakkforhome.webp">
+                    <p>Master Korean pronunciation with instant AI feedback on practical and fun Korean sentences. Perfect your accent, nail those tricky sounds, and speak Korean with confidence.</p>
+					<p><a href="speakk.html" class="button">Learn more >></a></p><br>			
+								<div class="download-buttons">
+								<a href="#" class="download-btn">
+								<img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play" style="height: 60px;">
+								</a>
+								<a href="#" class="download-btn">
+								<img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="Download on the App Store" style="height: 60px;">
+								</a>
+								</div>
+				</div>
+				<div class="feature-card">
+                    <div><img class="feature-icon" src="iconipa.png"></div>
+                    <h3>IPA Reference</h3>
+					<h4>Learn the sounds and symbols of General American English through the International Phonetic Alphabet.</h4>
+					<img src="speakeforhome.webp">
+                    <p>Designed specifically for Korean and Japanese learners of English. Get personalized AI feedback on your English pronunciation with comprehensive progress tracking.</p>
+					<p><a href="speake.html" class="button">Learn more >></a></p><br>            
+								<div class="download-buttons">
+								<a href="#" class="download-btn">
+								<img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play" style="height: 60px;">
+								</a>
+								<a href="#" class="download-btn">
+								<img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="Download on the App Store" style="height: 60px;">
+								</a>
+								</div>
+				</div>
+                
+			   </div>
+			   
+			   
+			   
+			   
+			   
+			   
+            </div>
+			
+			
+			<div class="container">
+            <div class="section-title">
+                <h2>For Korean and Japanese users of English</h2>
+               
+            </div>
+            
+            
+            <div class="features-grid">
+			
+				<div class="feature-card">
+                    <div><img class="feature-icon" src="icons5.png"></div>
+                    <h3>Speak-E: English Pronunciation</h3>
+					<h4>Detailed Speech Analysis for Clearer English Pronunciation</h4>
+					<img src="speakeforhome.webp">
+                    <p>Designed specifically for Korean and Japanese learners of English. Get personalized AI feedback on your English pronunciation with comprehensive progress tracking.</p>
+					<p><a href="speake.html" class="button">Learn more >></a></p><br>            
+								<div class="download-buttons">
+								<a href="#" class="download-btn">
+								<img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play" style="height: 60px;">
+								</a>
+								<a href="#" class="download-btn">
+								<img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="Download on the App Store" style="height: 60px;">
+								</a>
+								</div>
+				</div>
+                
+				<div class="feature-card">
+				<div><img class="feature-icon" src="interviewicon.png"></div>
+                    <h3>InterviewPrep</h3>
+					<h4>Blah blah blah</h4>
+					<img src="scorerforhome.webp">
+                    <p>Comprehensive AI feedback and scoring on test style speaking tasks. Scores for content, pronunciation, fluency, grammar, vocabulary and word for word transcriptions of your speech.</p>
+					<p><a href="speakingscorer.html" class="button">Learn more >></a></p><br>			
+								<div class="download-buttons">
+								<a href="#" class="download-btn">
+								<img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play" style="height: 60px;">
+								</a>
+								<a href="#" class="download-btn">
+								<img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="Download on the App Store" style="height: 60px;">
+								</a>
+								</div> 
+				</div>
+                <div class="feature-card">
+                    <div><img class="feature-icon" src="iconlexi.png"></div>
+                    <h3>Gramo: English Grammar</h3>
+					<h4>A complete, searchable reference guide to English Grammar for Korean and Japanese learners of English. Includes grammar quizzes and quick games to have fun while building your skills.</h4>
+					<img src="speakkforhome.webp">
+                    <p>Master Korean pronunciation with instant AI feedback on practical and fun Korean sentences. Perfect your accent, nail those tricky sounds, and speak Korean with confidence.</p>
+					<p><a href="speakk.html" class="button">Learn more >></a></p><br>			
+								<div class="download-buttons">
+								<a href="#" class="download-btn">
+								<img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play" style="height: 60px;">
+								</a>
+								<a href="#" class="download-btn">
+								<img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="Download on the App Store" style="height: 60px;">
+								</a>
+								</div>
+				</div>
+				
+                
+			   </div>
+   
+			   
+            </div>
+			
+	<div class="container">
+            <div class="section-title">
+                <h2>Also by soundperfect</h2>
+               
+            </div>
+
+            <div class="features-grid">
+			
+
+                <div class="feature-card">
+                    <div><img class="feature-icon" src="icon21.png"></div>
+                    <h3>Speak-K: Korean Pronunciation</h3>
+					<h4>Blah blah blah</h4>
+					<img src="speakkforhome.webp">
+                    <p>Master Korean pronunciation with instant AI feedback on practical and fun Korean sentences. Perfect your accent, nail those tricky sounds, and speak Korean with confidence.</p>
+					<p><a href="speakk.html" class="button">Learn more >></a></p><br>			
+								<div class="download-buttons">
+								<a href="#" class="download-btn">
+								<img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play" style="height: 60px;">
+								</a>
+								<a href="#" class="download-btn">
+								<img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="Download on the App Store" style="height: 60px;">
+								</a>
+								</div>
+				</div>
+				
+                
+			   </div>
+			   
+	
+			   
+            </div>		
+			
+			<p></p>
+        </div>
+    </section>
+
+	<!-- Free Apps Section -->
+    <section id="free-apps" class="section-white">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our FREE Learning Apps</h2>
+                <p>Complementary apps, completely free, to support your language learning journey</p>
+            </div>
+			<div class="free-apps-list">
+                <div class="free-app-item">
+            
+					<div><img class="free-icon" src="iconsoundmatch512.png"></div>
+                        
+                    <div class="free-app-content">
+                        <h3>SoundMaster</h3>
+                        <p>A 'find the matching sounds' game covering phonemes, rhyming words and minimal pairs (ship/sheep or glass/grass). Have fun while honing your listening skills. Starts easy, gets challenging quickly!</p>
+                        <div class="free-app-badges">
+                            <span class="badge">Free</span>
+							<span class="badge">Educational game</span>
+                            <span class="badge">Multi-level</span>
+							<span class="badge">High-score tracking</span>
+                        </div>
+                        <div class="free-app-links">
+                            <a href="#" class="text-link">View on Google Play →</a>
+                            <a href="#" class="text-link">View on App Store →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+			
+			<div class="free-apps-list">
+                <div class="free-app-item">
+            
+					<div><img class="free-icon" src="lexiicon.png"></div>
+                        
+                    <div class="free-app-content">
+                        <h3>LexiGrammar</h3>
+                        <p>A complete, searchable reference guide to English Grammar for Korean and Japanese learners of English. Includes grammar quizzes and quick games to have fun while building your skills. </p>
+                        <div class="free-app-badges">
+                            <span class="badge">Free</span>
+                            <span class="badge">Bookmarks</span>
+							<span class="badge">Games and quizzes</span>
+                        </div>
+                        <div class="free-app-links">
+                            <a href="#" class="text-link">View on Google Play →</a>
+                            <a href="#" class="text-link">View on App Store →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+			
+            <div class="free-apps-list">
+                <div class="free-app-item">
+            
+					<div><img class="free-icon" src="iconipa.png"></div>
+                        
+                    <div class="free-app-content">
+                        <h3>IPA Reference</h3>
+                        <p>Learn the sounds and symbols of General American English through the International Phonetic Alphabet.</p>
+                        <div class="free-app-badges">
+                            <span class="badge">Free</span>
+                            <span class="badge">Searchable</span>
+							<span class="badge">Native-speaker videos</span>
+                        </div>
+                        <div class="free-app-links">
+                            <a href="#" class="text-link">View on Google Play →</a>
+                            <a href="#" class="text-link">View on App Store →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+   
+    <!-- CTA Section -->
+    <section class="cta-section" id="cta">
+        <div class="container">
+            <h2>Start speaking. Start improving. Start for Free.</h2>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <a href="#" id="contact-link">Email Us</a>
+                    <p>807 Gold Plaza A<br>Dongbaek, Gyeonnggi-do</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <a href="legal.html">Terms, Privacy, Cookies</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <a href="faq.html">FAQ</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <a href="about.html">About Us</a>
+                    <a href="careers.html">Careers</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 <span class="sound">sound</span><span class="perfect">perfect</span>. All rights reserved. Crafted with passion for perfect pronunciation. Image by wayhomestudio on Freepik</p>
+            </div>
+        </div>
+    </footer>
+
+ <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        // Close mobile menu when clicking on a link
+        navLinks.addEventListener('click', (e) => {
+            if (e.target.tagName === 'A') {
+                navLinks.classList.remove('active');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const navHeight = document.querySelector('nav').offsetHeight;
+                    const targetPosition = target.offsetTop - navHeight;
+
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+// Language dropdown functionality
+const languageDropdown = document.getElementById('languageDropdown');
+const languageToggle = document.getElementById('languageToggle');
+const languageOptions = document.querySelectorAll('.language-option');
+
+// Toggle dropdown
+languageToggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    languageDropdown.classList.toggle('active');
+});
+
+// Close dropdown when clicking outside
+document.addEventListener('click', () => {
+    languageDropdown.classList.remove('active');
+});
+
+// Handle language selection
+languageOptions.forEach(option => {
+    option.addEventListener('click', (e) => {
+        e.preventDefault();
+        
+        // Remove active class from all options
+        languageOptions.forEach(opt => opt.classList.remove('active'));
+        
+        // Add active class to selected option
+        option.classList.add('active');
+        
+        // Update button text
+        const lang = option.getAttribute('data-lang');
+        languageToggle.innerHTML = `${lang.toUpperCase()} ▼`;
+        
+        // Close dropdown
+        languageDropdown.classList.remove('active');
+        
+        // Redirect to the selected language page
+        window.location.href = option.getAttribute('href');
+    });
+});
+
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.backgroundColor = 'rgba(44, 44, 46, 0.95)';
+                nav.style.backdropFilter = 'blur(10px)';
+            } else {
+                nav.style.backgroundColor = 'var(--charcoal)';
+                nav.style.backdropFilter = 'none';
+            }
+        });
+    </script>
+
+    <script>
+  document.getElementById('contact-link').addEventListener('click', function() {
+    location.href = 'mailto:' + ['info','soundperfect.app'].join('@');
+  });
+</script>
+	
+	<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+	<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
+                
